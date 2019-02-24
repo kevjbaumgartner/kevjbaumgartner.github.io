@@ -11,11 +11,16 @@ function addToQueue(title, monsterTable, reward){
 		monsterQueue[i] = monsterTable[init];
 		init += 1;
 		addKillPost(monsterQueue[i].name, monsterQueue[i].level);
+		queueCounter += 1;
 	}
 	queueSize = monsterQueue.length;
 	rewardQueue[queueSize - 1] = reward;
 	nameQueue[queueSize - 1] = title;
 	init = 0;
+	noQueuesCheck();
+	if(combatInProgress == 0){
+		initializeCombat();
+	}
 }
 
 //killTop(), reduces the queue size and shifts everything to the left by 1
@@ -24,11 +29,12 @@ function killTop(){
 		queueSize = 0;
 	}
 	else{
-		addLogText(monsterQueue[0].name + " killed!");
+		addLogText("<label class='logKill'>" + monsterQueue[0].name + " killed</label>!");
 		monsterQueue[0].handleDeath();
 		$('#queuePostings').find('div').first().remove();
 		queueSize -= 1;
 		checkQueueReward();
+		queueCounter -= 1;
 		bumpQueue();
 	}
 }
@@ -41,6 +47,7 @@ function bumpQueue(){
 	monsterQueue.pop();
 	rewardQueue = rewardQueue.slice(1);
 	nameQueue = nameQueue.slice(1);
+	noQueuesCheck();
 }
 
 //checkQueueReward(), checks to see if there is an accompanied reward for killing a monster at index position in the queue

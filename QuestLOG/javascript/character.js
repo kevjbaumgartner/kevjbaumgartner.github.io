@@ -24,7 +24,23 @@ var SC;
 var GC;
 var PC;
 
+var RMR = 0;
+
 var unspentPoints;
+
+var currentWeapon;
+
+var currentAmulet;
+var currentEarrings;
+var currentRing;
+var currentBelt;
+var currentCape;
+
+var currentHelmet;
+var currentChest;
+var currentGloves;
+var currentPants;
+var currentShoes;
 
 //Getters, Setters, & Updates
 function setName(val){
@@ -135,7 +151,7 @@ function getHP(){
 }
 
 function updateHPText(){
-	$('#characterHPText').html(HP);
+	$('#characterHPText').html(Number(HP).toFixed(2));
 }
 
 
@@ -149,7 +165,7 @@ function getMaxHP(){
 }
 
 function updateMaxHPText(){
-	$('#characterMaxHPText').html(maxHP);
+	$('#characterMaxHPText').html(Number(maxHP).toFixed(2));
 }
 
 
@@ -205,7 +221,7 @@ function getXP(){
 }
 
 function updateXPText(){
-	$('#characterXPText').html(XP);
+	$('#characterXPText').html(Number(XP).toFixed(2));
 }
 
 
@@ -315,7 +331,7 @@ function gainXP(val){
 	XP += hold;
 	XP = Math.round(XP * 100) / 100;
 	updateXPText();
-	addLogText("Gained (" + hold + ") XP!")
+	addLogText("Gained: <label class='logXP'>" + Number(hold).toFixed(2) + "</label> XP!")
 
 	if(XP >= reqXP){
 		XP -= reqXP;
@@ -336,7 +352,7 @@ function levelUp(){
 	updateUnspentPointsText();
 	checkUnspentPoints();
 
-	increaseMaxHP(5);
+	increaseMaxHP(3);
 	setHP(maxHP);
 	updateHPText();
 
@@ -344,9 +360,9 @@ function levelUp(){
 	setSP(maxSP);
 	updateSPText();
 
-	var d = new Date();
-	var time = d.toLocaleTimeString();
-	addLogText("Congratulations, Level Up: " + LV + " achieved at " + time + "!" );
+	updateWeaponArea();
+
+	addLogText("Congratulations, Level Up: " + LV + "!" );
 	addLogText("(1) Stat Point Granted!")
 }
 
@@ -356,6 +372,8 @@ function lvSTR(){
 	updateUnspentPointsText();
 	checkUnspentPoints();
 	updateSTRText();
+
+	updateWeaponArea();
 }
 
 function lvDEX(){
@@ -367,6 +385,8 @@ function lvDEX(){
 
 	increaseMaxSP(1);
 	updateMaxSPText();
+
+	updateWeaponArea();
 }
 
 function lvCON(){
@@ -401,8 +421,18 @@ function increaseMaxHP(val){
 	updateMaxHPText();
 }
 
+function decreaseMaxHP(val){
+	maxHP -= val;
+	updateMaxHPText();
+}
+
 function increaseMaxSP(val){
 	maxSP += val;
+	updateMaxSPText();
+}
+
+function decreaseMaxSP(val){
+	maxSP -= val;
 	updateMaxSPText();
 }
 
@@ -540,4 +570,318 @@ function spendCurrency(val){
     PC -= pcHold;
     updatePCText();
     addLogText(str);
+}
+
+//Weapon Functions
+function equipWeapon(weapon){
+	currentWeapon = weapon;
+	updateWeaponArea();
+}
+
+function exchangeWeapon(newWeapon){
+	if(confirm("Exchange your " + currentWeapon.name + " (Current DPS: " + Number(currentWeapon.dps).toFixed(2) + ") for " + newWeapon.name + " (New DPS: " + Number(newWeapon.dps).toFixed(2) + ")?")){
+		currentWeapon = newWeapon;
+		updateWeaponArea();
+	}
+	else{
+
+	}
+}
+
+function updateWeaponArea(){
+	$('#weaponNameText').html("<label class='rarity" + currentWeapon.rarity + "'>" + currentWeapon.name + "</label>");
+	$('#weaponDamageText').html(currentWeapon.damage);
+	$('#weaponAttackSpeedText').html(Number(currentWeapon.speed).toFixed(2));
+	$('#weaponCriticalChanceText').html(currentWeapon.cc);
+	$('#weaponCriticalDamageText').html(currentWeapon.cd);
+	currentWeapon.determineDPS();
+	$('#weaponDPSText').html(Number(currentWeapon.dps).toFixed(2));
+}
+
+//Accessory Functions
+function equipAccessory(accessory){
+	switch(accessory.type){
+		case 1:
+			currentAmulet = accessory;
+			incStat();
+			break;
+		case 2:
+			currentEarrings = accessory;
+			incStat();
+			break;
+		case 3:
+			currentRing = accessory;
+			incStat();
+			break;
+		case 4:
+			currentBelt = accessory;
+			incStat();
+			break;
+		case 5:
+			currentCape = accessory;
+			incStat();
+			break;
+		default:
+			break;
+	}
+
+	function incStat(){
+		switch(accessory.statType){
+			case 1:
+				STR += accessory.stat;
+				updateSTRText();
+				updateWeaponArea();
+				break;
+			case 2:
+				DEX += accessory.stat;
+				for(var i = 0; i < accessory.stat; i++){
+					increaseMaxSP(1);
+				}
+				updateMaxSPText();
+				updateDEXText();
+				updateWeaponArea();
+				break;
+			case 3:
+				CON += accessory.stat;
+				for(var i = 0; i < accessory.stat; i++){
+					increaseMaxHP(3);
+				}
+				updateMaxHPText();
+				updateCONText();
+				break;
+			case 4:
+				WIS += accessory.stat;
+				updateWISText();
+				break;
+			case 5:
+				LUK += accessory.stat;
+				updateLUKText();
+				break;
+			default:
+				break;
+		}
+	}
+}
+
+function unequipAccessory(accessory){
+	switch(accessory.type){
+		case 1:
+			decStat();
+			break;
+		case 2:
+			decStat();
+			break;
+		case 3:
+			decStat();
+			break;
+		case 4:
+			decStat();
+			break;
+		case 5:
+			decStat();
+			break;
+		default:
+			break;
+	}
+
+	function decStat(){
+		switch(accessory.statType){
+			case 1:
+				STR -= accessory.stat;
+				updateSTRText();
+				updateWeaponArea();
+				break;
+			case 2:
+				DEX -= accessory.stat;
+				for(var i = 0; i < accessory.stat; i++){
+					decreaseMaxSP(1);
+				}
+				updateMaxSPText();
+				updateDEXText();
+				updateWeaponArea();
+				break;
+			case 3:
+				CON -= accessory.stat;
+				for(var i = 0; i < accessory.stat; i++){
+					decreaseMaxHP(3);
+				}
+				updateMaxHPText();
+				updateCONText();
+				break;
+			case 4:
+				WIS -= accessory.stat;
+				updateWISText();
+				break;
+			case 5:
+				LUK -= accessory.stat;
+				updateLUKText();
+				break;
+			default:
+				break;
+		}
+	}
+}
+
+function exchangeAccessory(newAccessory){
+	var currentStatTypeHold;
+	var newStatTypeHold;
+
+	switch(newAccessory.type){
+		case 1:
+			currentStatTypeHold = parseStatType(currentAmulet);
+			newStatTypeHold = parseStatType(newAccessory);
+			if(confirm("Exchange your " + currentAmulet.name + " (Stat Bonus: +" + currentAmulet.stat + " " + currentStatTypeHold + ") for " + newAccessory.name + " (Stat Bonus: +" + newAccessory.stat + " " + newStatTypeHold + ")?")){
+				unequipAccessory(currentAmulet);
+				equipAccessory(newAccessory);
+			}else{}
+			break;
+		case 2:
+			currentStatTypeHold = parseStatType(currentEarrings);
+			newStatTypeHold = parseStatType(newAccessory);
+			if(confirm("Exchange your " + currentEarrings.name + " (Stat Bonus: +" + currentAmulet.stat + " " + currentStatTypeHold + ") for " + newAccessory.name + " (Stat Bonus: +" + newAccessory.stat + " " + newStatTypeHold + ")?")){
+				unequipAccessory(currentEarrings);
+				equipAccessory(newAccessory);
+			}else{}
+			break;
+		case 3:
+			currentStatTypeHold = parseStatType(currentRing);
+			newStatTypeHold = parseStatType(newAccessory);
+			if(confirm("Exchange your " + currentRing.name + " (Stat Bonus: +" + currentAmulet.stat + " " + currentStatTypeHold + ") for " + newAccessory.name + " (Stat Bonus: +" + newAccessory.stat + " " + newStatTypeHold + ")?")){
+				unequipAccessory(currentRing);
+				equipAccessory(newAccessory);
+			}else{}
+			break;
+		case 4:
+			currentStatTypeHold = parseStatType(currentBelt);
+			newStatTypeHold = parseStatType(newAccessory);
+			if(confirm("Exchange your " + currentBelt.name + " (Stat Bonus: +" + currentAmulet.stat + " " + currentStatTypeHold + ") for " + newAccessory.name + " (Stat Bonus: +" + newAccessory.stat + " " + newStatTypeHold + ")?")){
+				unequipAccessory(currentBelt);
+				equipAccessory(newAccessory);
+			}else{}
+			break;
+		case 5:
+			currentStatTypeHold = parseStatType(currentCape);
+			newStatTypeHold = parseStatType(newAccessory);
+			if(confirm("Exchange your " + currentCape.name + " (Stat Bonus: +" + currentEarrings.stat + " " + currentStatTypeHold + ") for " + newAccessory.name + " (Stat Bonus: +" + newAccessory.stat + " " + newStatTypeHold + ")?")){
+				unequipAccessory(currentCape);
+				equipAccessory(newAccessory);
+			}else{}
+			break;
+		default:
+			break;
+	}
+	updateAccessoryArea();
+}
+
+function updateAccessoryArea(){
+	$('#amuletNameText').html("<label class='rarity" + currentAmulet.rarity + "'>" + currentAmulet.name + "</label> (+" + currentAmulet.stat + " " + parseStatType(currentAmulet) + ")");
+	$('#earringsNameText').html("<label class='rarity" + currentEarrings.rarity + "'>" + currentEarrings.name + "</label> (+" + currentEarrings.stat + " " + parseStatType(currentEarrings) + ")");
+	$('#ringNameText').html("<label class='rarity" + currentRing.rarity + "'>" + currentRing.name + "</label> (+" + currentRing.stat + " " + parseStatType(currentRing) + ")");
+	$('#beltNameText').html("<label class='rarity" + currentBelt.rarity + "'>" + currentBelt.name + "</label> (+" + currentBelt.stat + " " + parseStatType(currentBelt) + ")");
+	$('#capeNameText').html("<label class='rarity" + currentCape.rarity + "'>" + currentCape.name + "</label> (+" + currentCape.stat + " " + parseStatType(currentCape) + ")");
+}
+
+//Armour Function
+function equipArmour(armour){
+	switch(armour.type){
+		case 1:
+			currentHelmet = armour;
+			incRMR();
+			break;
+		case 2:
+			currentChest = armour;
+			incRMR();
+			break;
+		case 3:
+			currentGloves = armour;
+			incRMR();
+			break;
+		case 4:
+			currentPants = armour;
+			incRMR();
+			break;
+		case 5:
+			currentShoes = armour;
+			incRMR();
+			break;
+		default:
+			break;
+	}
+
+	function incRMR(){
+		RMR += armour.defense;
+	}
+}
+
+function unequipArmour(armour){
+	switch(armour.type){
+		case 1:
+			decRMR();
+			break;
+		case 2:
+			decRMR();
+			break;
+		case 3:
+			decRMR();
+			break;
+		case 4:
+			decRMR();
+			break;
+		case 5:
+			decRMR();
+			break;
+		default:
+			break;
+	}
+
+	function decRMR(){
+		RMR -= armour.defense;
+	}
+}
+
+function exchangeArmour(newArmour){
+	switch(newArmour.type){
+		case 1:
+			if(confirm("Exchange your " + currentHelmet.name + " (DEF: " + currentHelmet.defense + ") for " + newArmour.name + " (DEF: " + newArmour.defense + ")?")){
+				unequipArmour(currentHelmet);
+				equipArmour(newArmour);
+			}else{}
+			break;
+		case 2:
+			if(confirm("Exchange your " + currentChest.name + " (DEF: " + currentChest.defense + ") for " + newArmour.name + " (DEF: " + newArmour.defense + ")?")){
+				unequipArmour(currentChest);
+				equipArmour(newArmour);
+			}else{}
+			break;
+		case 3:
+			if(confirm("Exchange your " + currentGloves.name + " (DEF: " + currentGloves.defense + ") for " + newArmour.name + " (DEF: " + newArmour.defense + ")?")){
+				unequipArmour(currentGloves);
+				equipArmour(newArmour);
+			}else{}
+			break;
+		case 4:
+			if(confirm("Exchange your " + currentPants.name + " (DEF: " + currentPants.defense + ") for " + newArmour.name + " (DEF: " + newArmour.defense + ")?")){
+				unequipArmour(currentPants);
+				equipArmour(newArmour);
+			}else{}
+			break;
+		case 5:
+			if(confirm("Exchange your " + currentShoes.name + " (DEF: " + currentShoes.defense + ") for " + newArmour.name + " (DEF: " + newArmour.defense + ")?")){
+				unequipArmour(currentShoes);
+				equipArmour(newArmour);
+			}else{}
+			break;
+		default:
+			break;
+	}
+	updateArmourArea();
+}
+
+function updateArmourArea(){
+	$('#helmetNameText').html("<label class='rarity" + currentHelmet.rarity + "'>" + currentHelmet.name + "</label> (+" + currentHelmet.defense + " DEF)");
+	$('#chestNameText').html("<label class='rarity" + currentChest.rarity + "'>" + currentChest.name + "</label> (+" + currentChest.defense + " DEF)");
+	$('#glovesNameText').html("<label class='rarity" + currentGloves.rarity + "'>" + currentGloves.name + "</label> (+" + currentGloves.defense + " DEF)");
+	$('#pantsNameText').html("<label class='rarity" + currentPants.rarity + "'>" + currentPants.name + "</label> (+" + currentPants.defense + " DEF)");
+	$('#shoesNameText').html("<label class='rarity" + currentShoes.rarity + "'>" + currentShoes.name + "</label> (+" + currentShoes.defense + " DEF)");
+	$('#characterRMRText').html(RMR);
 }
