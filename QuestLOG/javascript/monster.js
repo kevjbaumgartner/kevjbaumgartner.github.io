@@ -10,6 +10,7 @@ class monster{
 		var XP;
 		var lootTable;
 		var type;
+		var QUID; //Quest UID that this monster belongs to
 	}
 
 	//Getters & Setters
@@ -66,6 +67,12 @@ class monster{
 	}
 	setType(val){
 		this.type = val;
+	}
+	getQUID(){
+		return this.QUID;
+	}
+	setQUID(val){
+		this.QUID = val;
 	}
 
 	//generateLootTable(), creates a predefined amount of loot that is affected by LUK
@@ -130,10 +137,9 @@ class monster{
 	//scaleMonster(), scales the stats of the monster based on its level
 	scaleMonster(){
 		var lv = this.getLevel();
-		this.HP = (this.HP + (this.HP * (lv / 4)));
-		this.damage = (this.damage + (this.damage * (lv / 6)));
-		this.speed = (this.speed - (1 * (lv / 12)));
-		this.defense = (this.defense + (this.defense * (lv / 10)));
+		this.setHP((this.getHP() + (this.getHP() * (lv / 4))));
+		this.setDamage((this.getDamage() + (this.getDamage() * (lv / 6))));
+		this.setDefense((this.getDefense() + (this.getDefense() * (lv / 10))));
 	}
 }
 

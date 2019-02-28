@@ -261,6 +261,7 @@ body{
 	width: 0%;
 	height: 1em;
 	background-color: #2dbc83;
+	transition: all 0.2s ease-in-out;
 }
 
 /* Quest Specific */
@@ -327,6 +328,7 @@ body{
 	width: 0%;
 	height: 1em;
 	background-color: #bf0000;
+	transition: all 0.2s ease-in-out;
 }
 
 #monsterASProgressArea{
@@ -343,6 +345,21 @@ body{
 	background-color: #f4b042;
 }
 
+#monsterRMProgressArea{
+	margin: 2%;
+	padding: 0;
+	background-color: #CACACA;
+}
+
+#monsterRMProgressBar{
+	margin: 0;
+	padding: 0;
+	width: 0%;
+	height: 1em;
+	background-color: #98a8d6;
+	transition: all 0.2s ease-in-out;
+}
+
 #playerHPProgressArea{
 	margin: 2%;
 	padding: 0;
@@ -355,6 +372,7 @@ body{
 	width: 0%;
 	height: 1em;
 	background-color: #bf0000;
+	transition: all 0.2s ease-in-out;
 }
 
 #playerASProgressArea{
@@ -369,4 +387,47 @@ body{
 	width: 0%;
 	height: 1em;
 	background-color: #f4b042;
+}
+
+#playerRMProgressArea{
+	margin: 2%;
+	padding: 0;
+	background-color: #CACACA;
+}
+
+#playerRMProgressBar{
+	margin: 0;
+	padding: 0;
+	width: 0%;
+	height: 1em;
+	background-color: #98a8d6;
+	transition: all 0.2s ease-in-out;
+}
+
+#combatButtons{
+	text-align: center;
+}
+
+#fleeButton{
+	font-family: 'Quicksand', sans-serif;
+	font-size: 1em;
+	border: none;
+	background-color: #bf0000;
+	color: #FAFAFA;
+	padding: 1% 5%;
+	cursor: pointer;
+}
+
+#fleeButton:hover{
+	background-color: #a00000;
+}
+
+#fleeButton:hover:active{
+	background-color: #7f0000;
+}
+
+#fleeButton:disabled{
+	color: #B1B1B1;
+	background-color: #DBDBDB;
+	pointer-events: none;
 }
