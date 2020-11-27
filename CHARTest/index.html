@@ -15,6 +15,9 @@
 
 	<!-- JQuery Import -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!-- Font Awesome Import -->
+	<script src="https://kit.fontawesome.com/8d8306b116.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div id="wrap">
@@ -41,9 +44,9 @@
 				</ul>
 			</div>
 		</div>
-		<div id="scoreboardLeft">
-			<label>Total Presses: </label><span id="total">0</span>
-			<br>
+		<div id="scoreboard">
+			<label id="scoreboardHeader">how you did</label>
+			<br><br>
 			<label>Correct: </label><span id="correct">0</span>
 			<br>
 			<label>Incorrect: </label><span id="incorrect">0</span>
@@ -53,7 +56,13 @@
 			<label>Letters Per Second: </label><span id="lps">0 lps</span>
 		</div>
 		<div id="footer">
-			Press ENTER to start/stop the game
+			press the corresponding letters on your keyboard as they appear on screen
+			<br><br>
+			<i class="fas fa-keyboard"></i>
+			<br><br>
+			enter to start/stop
+			<br><br>
+			backspace to restart
 		</div>
 	</div>
 </body>

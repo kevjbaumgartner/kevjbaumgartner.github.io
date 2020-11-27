@@ -63,19 +63,24 @@ function startGame(){
 	updateAddKeyboard("de");
 	updateLetter();
 	hideFooter();
-	hidescoreboardLeft();
+	hideScoreboard();
+	displayTime();
+	displayKeyboard();
 	startTimer();
-	updateScoreboardLeft();
+	updateScoreboard();
+	FLAG_started = 1;
 }
 
 //endGame()
 function endGame(){
 	endTimer();
 	$("#letter").text("");
-	delayWrite("letter", "Again?")
-	updateRemoveKeyboard("de highlight");
+	delayWrite("letter", "again?")
+	updateRemoveKeyboard("highlight");
 	displayFooter();
-	displayscoreboardLeft();
+	displayScoreboard();
+	hideTime();
+	hideKeyboard();
 	FLAG_started = 0;
 	currentKey = 0;
 	prevKey = 0;
@@ -95,23 +100,40 @@ function hideFooter(){
 	$("#footer").addClass("reduce");
 }
 
-//displayscoreboardLeft()
-function displayscoreboardLeft(){
-	$("#scoreboardLeft").removeClass("reduce");
+//displayKeyboard()
+function displayKeyboard(){
+	$("#keyboard").css("opacity", "1");
 }
 
-//hidescoreboardLeft()
-function hidescoreboardLeft(){
-	$("#scoreboardLeft").addClass("reduce");
+//hideKeyboard()
+function hideKeyboard(){
+	$("#keyboard").css("opacity", "0");
 }
 
-//updateScoreboardLeft()
-function updateScoreboardLeft(){
+//displayScoreboard()
+function displayScoreboard(){
+	$("#scoreboard").css("opacity", "1");
+}
+
+//hideScoreboard()
+function hideScoreboard(){
+	$("#scoreboard").css("opacity", "0");
+}
+
+//displayTime()
+function displayTime(){
+	$("#time").css("opacity", "0.25");
+}
+
+//hideTime()
+function hideTime(){
+	$("#time").css("opacity", "0");
+}
+
+//updateScoreboard()
+function updateScoreboard(){
 	calculateAccuracy();
 	calculateLPS();
-	console.log(CALC_accuracy);
-
-	$("#total").text(COUNTER_total);
 	$("#correct").text(COUNTER_correct);
 	$("#incorrect").text(COUNTER_incorrect);
 	if(!isNaN(CALC_accuracy)){
@@ -120,7 +142,7 @@ function updateScoreboardLeft(){
 	else{
 		$("#accuracy").text("0.00%");
 	}
-	if(!isNaN(CALC_lps)){
+	if((!isNaN(CALC_lps)) && isFinite(CALC_lps)){
 		$("#lps").text(CALC_lps + " lps");
 	}
 	else{
@@ -143,7 +165,7 @@ function startTimer(){
 	COUNTER_time = 60;
 	$('#time').text(COUNTER_time);
 	gameTimer = setInterval(function(){
-		updateScoreboardLeft();
+		updateScoreboard();
 		COUNTER_time--;
 		$('#time').text(COUNTER_time);
 		if (COUNTER_time == 0) {
@@ -162,7 +184,7 @@ function endTimer(){
 
 //introduction()
 function introduction(){
-	delayWrite("letter", "Hello, wanna play?");
+	delayWrite("letter", "how fast are you?");
 }
 
 //clearAllTimeouts()
@@ -205,12 +227,13 @@ $(document).keydown(function(event){
 	if((FLAG_started == 0) && (keystroke == 13)){
 		FLAG_started = 1;
 		startGame();
+		COUNTER_total = -1;
 	}
 
 	else if((FLAG_started == 0) && (keystroke != 13)){
 		clearAllTimeouts();
 		$("#letter").text("");
-		delayWrite("letter", "That's not ENTER...");
+		delayWrite("letter", "thats not enter..");
 		$("#keyboard").addClass("ANIMATION_errorWiggle");
 		setTimeout(function(){ 
 			$("#keyboard").removeClass("ANIMATION_errorWiggle");
@@ -219,7 +242,7 @@ $(document).keydown(function(event){
 
 	else if(FLAG_started == 1){
 		COUNTER_total++;
-		updateScoreboardLeft();
+		updateScoreboard();
 
 		if(keystroke == currentKey){
 			COUNTER_correct++;
@@ -232,6 +255,11 @@ $(document).keydown(function(event){
 
 		else if(keystroke == 13){
 			endGame();
+		}
+
+		else if(keystroke == 8){
+			endGame();
+			startGame();
 		}
 
 		else if(keystroke != currentKey){
