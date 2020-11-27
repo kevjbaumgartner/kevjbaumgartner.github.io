@@ -258,8 +258,14 @@ $(document).keydown(function(event){
 		}
 
 		else if(keystroke == 8){
-			endGame();
-			startGame();
+			$("#keyboard").addClass("blink");
+			setTimeout(function(){ 
+				$("#keyboard").removeClass("blink");
+			}, 150);
+			setTimeout(function(){
+				endGame();
+				startGame();
+			}, 200);
 		}
 
 		else if(keystroke != currentKey){

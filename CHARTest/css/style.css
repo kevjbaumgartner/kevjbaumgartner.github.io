@@ -152,6 +152,11 @@ html, body, a{
 	opacity: 0.25;
 }
 
+.blink{
+	transition: all 0.1s ease-in-out;
+	opacity: 0.1 !important;
+}
+
 .flash{
 	opacity: 1.0 !important;
 }
