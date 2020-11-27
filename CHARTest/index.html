@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Meta Info -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CHAR Test</title>
+
+	<!-- Google Fonts Imports -->
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet"> 
+
+	<!-- Style Imports -->
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- JQuery Import -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+	<div id="wrap">
+		<div id="time">
+			
+		</div>
+		<div id="letter">
+			
+		</div>
+		<div id="keyboard">
+			<div class="keyboardRow" id="keyboardRowOne">
+				<ul>
+					<li>Q</li><li>W</li><li>E</li><li>R</li><li>T</li><li>Y</li><li>U</li><li>I</li><li>O</li><li>P</li>
+				</ul>
+			</div>
+			<div class="keyboardRow" id="keyboardRowTwo">
+				<ul>
+					<li>A</li><li>S</li><li>D</li><li>F</li><li>G</li><li>H</li><li>J</li><li>K</li><li>L</li>
+				</ul>
+			</div>
+			<div class="keyboardRow" id="keyboardRowThree">
+				<ul>
+					<li>Z</li><li>X</li><li>C</li><li>V</li><li>B</li><li>N</li><li>M</li>
+				</ul>
+			</div>
+		</div>
+		<div id="scoreboardLeft">
+			<label>Total Presses: </label><span id="total">0</span>
+			<br>
+			<label>Correct: </label><span id="correct">0</span>
+			<br>
+			<label>Incorrect: </label><span id="incorrect">0</span>
+			<br><br>
+			<label>Accuracy: </label><span id="accuracy">0.00%</span>
+			<br>
+			<label>Letters Per Second: </label><span id="lps">0 lps</span>
+		</div>
+		<div id="footer">
+			Press ENTER to start/stop the game
+		</div>
+	</div>
+</body>
+
+	<!-- Script Imports -->
+	<script type="text/javascript" src="js/script.js"></script>
+</html>
