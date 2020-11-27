@@ -3,6 +3,13 @@
 	src: url("../fonts/Roboto-Regular.ttf");
 }
 
+.STYLE_key{
+	background-color: #E2E2E2;
+	border-radius: 5px;
+	color: #212121;
+	padding: 3px 6px;
+}
+
 html, body, a{
 	font-family: Roboto-Regular;
 	background-color: #212121; 
@@ -104,6 +111,14 @@ html, body, a{
 	user-select: none;
 	color: #E2E2E2;
 	transition: all 0.1s ease-in-out;
+}
+
+#instructions{
+	position: absolute;
+	text-align: left;
+	width: 20vw;
+	left: 40vw !important;
+	right: 40vw !important;
 }
 
 .keyboardRow{
