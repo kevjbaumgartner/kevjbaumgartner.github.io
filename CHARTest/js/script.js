@@ -79,7 +79,9 @@ function updateRemoveKeyboard(cls){
 
 //startGame()
 function startGame(){
+	resetThings();
 	clearAllTimeouts();
+	COUNTER_time = chosenTime;
 	updateAddKeyboard("de");
 	updateLetter();
 	if(FLAG_previewmode == 1){
@@ -90,7 +92,6 @@ function startGame(){
 	displayTime();
 	displayKeyboard();
 	hideSettings();
-	COUNTER_time = chosenTime;
 	startTimer();
 	updateScoreboard();
 	FLAG_started = 1;
@@ -98,6 +99,7 @@ function startGame(){
 
 //endGame()
 function endGame(){
+	updateScoreboard();
 	if(FLAG_previewmode == 1){
 		hidePM();
 	}
@@ -111,13 +113,19 @@ function endGame(){
 	displaySettings();
 	hideTime();
 	hideKeyboard();
+	resetThings();
 	FLAG_started = 0;
+	COUNTER_time = 0
+}
+
+//resetThings()
+function  resetThings(){
+	nextKey = 0;
 	currentKey = 0;
 	prevKey = 0;
 	COUNTER_total = 0;
 	COUNTER_correct = 0;
 	COUNTER_incorrect = 0;
-	COUNTER_time = 0
 }
 
 //displayFooter()
@@ -228,14 +236,13 @@ function calculateAccuracy(){
 
 //calculateLPS()
 function calculateLPS(){
-	CALC_lps = ((COUNTER_total / (60 - COUNTER_time)).toFixed(2));
+	CALC_lps = ((COUNTER_total / (chosenTime - COUNTER_time)).toFixed(2));
 }
 
 //startTimer()
 function startTimer(){
 	$('#time').text(COUNTER_time);
 	gameTimer = setInterval(function(){
-		updateScoreboard();
 		COUNTER_time--;
 		$('#time').text(COUNTER_time);
 		if (COUNTER_time == 0) {
@@ -297,14 +304,12 @@ $(document).keydown(function(event){
 	if((FLAG_started == 0) && (keystroke == 13)){
 		FLAG_started = 1;
 		startGame();
-		COUNTER_total = -1;
 	}
 
 	else if((FLAG_started == 0) && (keystroke == 8)){
 		event.preventDefault();
 		FLAG_started = 1;
 		startGame();
-		COUNTER_total = -1;
 	}
 
 	else if((FLAG_started == 0) && (keystroke != 13)){
@@ -318,9 +323,6 @@ $(document).keydown(function(event){
 	}
 
 	else if(FLAG_started == 1){
-		COUNTER_total++;
-		updateScoreboard();
-
 		if(keystroke == currentKey){
 			COUNTER_correct++;
 			$(".keyboardRow ul li:contains('" + String.fromCharCode(keystroke).toUpperCase() +"')").addClass("flashCorrect");
@@ -328,6 +330,7 @@ $(document).keydown(function(event){
 				$(".keyboardRow ul li:contains('" + String.fromCharCode(keystroke).toUpperCase() +"')").removeClass("flashCorrect");
 			}, 150);
 			updateLetter();
+			COUNTER_total++;
 		}
 
 		else if(keystroke == 13){
@@ -352,6 +355,7 @@ $(document).keydown(function(event){
 			setTimeout(function(){
 				$(".keyboardRow ul li:contains('" + String.fromCharCode(keystroke).toUpperCase() +"')").removeClass("ANIMATION_errorWiggle flashIncorrect");
 			}, 200);
+			COUNTER_total++;
 		}
 	}
 });
