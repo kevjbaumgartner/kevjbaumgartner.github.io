@@ -8,6 +8,74 @@
 	border-radius: 5px;
 	color: #212121;
 	padding: 3px 6px;
+	font-size: 1vw;
+}
+
+.instructionsLabel{
+	display: inline-block;
+}
+
+.instructionsLabel:first-of-type{
+	margin-bottom: 1vh;
+}
+
+#settings{
+	position: absolute;
+	text-align: left;
+	font-size: 1vw;
+	padding: 1.5vh 1vw;
+	width: 12.5vw;
+	height: 12.5vh;
+	top: 5vh;
+	bottom: 77.5vh;
+	left: 83vw;
+	right: 2.5vw;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	color: #E2E2E2;
+	transition: all 0.1s ease-in-out;
+	border: 1px solid #E2E2E2;
+	border-radius: 10px;
+	z-index: 101;
+}
+
+.settingsLabel{
+	display: inline-block;
+}
+
+.settingsLabel:first-of-type{
+	margin-bottom: 1vh;
+}
+
+.settingsButton{
+	background-color: #E2E2E2;
+	border-radius: 5px;
+	color: #212121;
+	padding: 2px 4px;
+	border: 0px solid transparent;
+	font-size: 1vw;
+	display: inline-block;
+	margin: 0px 1px;
+	transition: all 0.1s ease-in-out;
+}
+
+.settingsButton:hover{
+	cursor: pointer;
+	opacity: 1;
+}
+
+.buttonDe{
+	opacity: 0.25;
+	cursor: default;
+}
+
+.cursorDisable{
+	pointer-events: none;
+}
+
+#settingsHeader{
+	font-size: 2vw;
 }
 
 html, body, a{
@@ -55,6 +123,24 @@ html, body, a{
 	user-select: none;
 	color: #E2E2E2;
 	transition: all 0.1s ease-in-out;
+}
+
+#pmLetter{
+	position: absolute;
+	width: 90vw;
+	height: 10vh;
+	left: 8.5vw;
+	right: 1.5vw;
+	top: 32.5vh;
+	bottom: 57.5vh;
+	text-align: center;
+	font-size: 2vw;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	color: #92D0D6;
+	transition: all 0.1s ease-in-out;
+	opacity: 0;
 }
 
 #keyboard{
@@ -169,6 +255,11 @@ html, body, a{
 .flashIncorrect{
 	opacity: 1.0 !important;
 	border-color: #BD2319 !important;
+}
+
+.flashNext{
+	opacity: 0.5 !important;
+	border-color: #92D0D6 !important;
 }
 
 .highlight{

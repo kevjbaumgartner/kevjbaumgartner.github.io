@@ -1,10 +1,13 @@
 //Flags
 var FLAG_started = 0;
+var FLAG_previewmode = 0;
 
 //Tracers
+var nextKey = 0;
 var currentKey = 0;
 var prevKey = 0;
 var gameTimer;
+var chosenTime = 60;
 
 //Counters
 var COUNTER_total = 0;
@@ -30,6 +33,16 @@ function randomLetter(){
 	return temp;
 }
 
+//previewLetter()
+function previewLetter(){
+		$(".keyboardRow ul li:contains('" + String.fromCharCode(nextKey).toUpperCase() +"')").removeClass("flashNext");
+	do{
+		nextKey = randomLetter();
+	}while(nextKey == currentKey);
+	$(".keyboardRow ul li:contains('" + String.fromCharCode(nextKey).toUpperCase() +"')").addClass("flashNext");
+	$("#pmLetter").text(String.fromCharCode(nextKey).toUpperCase());
+}
+
 //updateLetter()
 function updateLetter(){
 	prevKey = currentKey;
@@ -38,6 +51,13 @@ function updateLetter(){
 	do{
 		currentKey = randomLetter();
 	}while(currentKey == prevKey);
+
+	if(FLAG_previewmode == 1){
+		if(nextKey != 0){
+			currentKey = nextKey;
+		}
+		previewLetter();
+	}
 
 	$(".keyboardRow ul li:contains('" + String.fromCharCode(currentKey).toUpperCase() +"')").addClass("highlight");
 	$("#letter").text(String.fromCharCode(currentKey).toUpperCase());
@@ -62,10 +82,15 @@ function startGame(){
 	clearAllTimeouts();
 	updateAddKeyboard("de");
 	updateLetter();
+	if(FLAG_previewmode == 1){
+		displayPM();
+	}
 	hideFooter();
 	hideScoreboard();
 	displayTime();
 	displayKeyboard();
+	hideSettings();
+	COUNTER_time = chosenTime;
 	startTimer();
 	updateScoreboard();
 	FLAG_started = 1;
@@ -73,12 +98,17 @@ function startGame(){
 
 //endGame()
 function endGame(){
+	if(FLAG_previewmode == 1){
+		hidePM();
+	}
 	endTimer();
 	$("#letter").text("");
 	delayWrite("letter", "again?")
 	updateRemoveKeyboard("highlight");
+	updateRemoveKeyboard("flashNext");
 	displayFooter();
 	displayScoreboard();
+	displaySettings();
 	hideTime();
 	hideKeyboard();
 	FLAG_started = 0;
@@ -130,6 +160,47 @@ function hideTime(){
 	$("#time").css("opacity", "0");
 }
 
+//displaySettings()
+function displaySettings(){
+	$("#settings").removeClass("reduce cursorDisable");
+}
+
+//hideSettings()
+function hideSettings(){
+	$("#settings").addClass("reduce cursorDisable");
+}
+
+//changeTime(val)
+function changeTime(val){
+	chosenTime = val;
+	$(".tb").addClass("buttonDe");
+	$(".tb:contains('" + val +"')").removeClass("buttonDe");
+}
+
+//togglePreviewMode(val)
+function togglePreviewMode(val){
+	var temp;
+	FLAG_previewmode = val;
+	$(".pmb").addClass("buttonDe");
+	if(val == 0){
+		temp = "off";
+	}
+	else{
+		temp = "on";
+	}
+	$(".pmb:contains('" + temp +"')").removeClass("buttonDe");
+}
+
+//displayPM()
+function displayPM(){
+	$("#pmLetter").css("opacity", "0.25");
+}
+
+//hidePM()
+function hidePM(){
+	$("#pmLetter").css("opacity", "0");
+}
+
 //updateScoreboard()
 function updateScoreboard(){
 	calculateAccuracy();
@@ -162,7 +233,6 @@ function calculateLPS(){
 
 //startTimer()
 function startTimer(){
-	COUNTER_time = 60;
 	$('#time').text(COUNTER_time);
 	gameTimer = setInterval(function(){
 		updateScoreboard();
@@ -230,6 +300,13 @@ $(document).keydown(function(event){
 		COUNTER_total = -1;
 	}
 
+	else if((FLAG_started == 0) && (keystroke == 8)){
+		event.preventDefault();
+		FLAG_started = 1;
+		startGame();
+		COUNTER_total = -1;
+	}
+
 	else if((FLAG_started == 0) && (keystroke != 13)){
 		clearAllTimeouts();
 		$("#letter").text("");
@@ -258,6 +335,7 @@ $(document).keydown(function(event){
 		}
 
 		else if(keystroke == 8){
+			event.preventDefault();
 			$("#keyboard").addClass("blink");
 			setTimeout(function(){ 
 				$("#keyboard").removeClass("blink");

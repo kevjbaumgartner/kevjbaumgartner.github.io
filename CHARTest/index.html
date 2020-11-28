@@ -15,16 +15,28 @@
 
 	<!-- JQuery Import -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-	<!-- Font Awesome Import -->
-	<script src="https://kit.fontawesome.com/8d8306b116.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div id="wrap">
+		<div id="settings">
+			<label id="settingsHeader">settings</label>
+			<br><br>
+			<p class="settingsLabel">time:</p>
+			<span class="settingsButton tb buttonDe" id="time15" onclick="changeTime(15)">15</span>
+			<span class="settingsButton tb buttonDe" id="time30" onclick="changeTime(30)">30</span>
+			<span class="settingsButton tb" id="time60" onclick="changeTime(60)">60</span>
+			<br>
+			<p class="settingsLabel">preview mode:</p>
+			<span class="settingsButton pmb buttonDe" id="pmOn" onclick="togglePreviewMode(1)">on</span>
+			<span class="settingsButton pmb" id="pmOff" onclick="togglePreviewMode(0)">off</span>
+		</div>
 		<div id="time">
 			
 		</div>
 		<div id="letter">
+			
+		</div>
+		<div id="pmLetter">
 			
 		</div>
 		<div id="keyboard">
@@ -59,9 +71,9 @@
 			press the corresponding letters on your keyboard as they appear on screen
 			<br><br>
 			<div id="instructions">
-				<span class="STYLE_key">enter</span> to start/finish
-				<br><br>
-				<span class="STYLE_key">backspace</span> to restart
+				<span class="STYLE_key">enter</span> <label class="instructionsLabel">to start/finish</label>
+				<br>
+				<span class="STYLE_key instructionsLabel">backspace</span> <label class="instructionsLabel">to quickly restart</label>
 			</div>
 		</div>
 	</div>
