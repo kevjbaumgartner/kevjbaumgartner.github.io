@@ -247,6 +247,11 @@ html, body, a{
 	opacity: 1.0 !important;
 }
 
+.flashNext{
+	opacity: 0.5 !important;
+	border-color: #92D0D6 !important;
+}
+
 .flashCorrect{
 	opacity: 1.0 !important;
 	border-color: #19BD31 !important;
@@ -255,11 +260,6 @@ html, body, a{
 .flashIncorrect{
 	opacity: 1.0 !important;
 	border-color: #BD2319 !important;
-}
-
-.flashNext{
-	opacity: 0.5 !important;
-	border-color: #92D0D6 !important;
 }
 
 .highlight{
