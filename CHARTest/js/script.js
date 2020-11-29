@@ -183,6 +183,7 @@ function changeTime(val){
 	chosenTime = val;
 	$(".tb").addClass("buttonDe");
 	$(".tb:contains('" + val +"')").removeClass("buttonDe");
+	localStorage.setItem("storedTime", val);
 }
 
 //togglePreviewMode(val)
@@ -197,6 +198,7 @@ function togglePreviewMode(val){
 		temp = "on";
 	}
 	$(".pmb:contains('" + temp +"')").removeClass("buttonDe");
+	localStorage.setItem("storedPM", val);
 }
 
 //displayPM()
@@ -262,6 +264,14 @@ function endTimer(){
 //introduction()
 function introduction(){
 	delayWrite("letter", "how fast are you?");
+
+	if(localStorage.getItem("storedTime") !== null){
+		changeTime(localStorage.getItem("storedTime"));
+	}
+
+	if(localStorage.getItem("storedPM") !== null){
+		togglePreviewMode(localStorage.getItem("storedPM"));
+	}
 }
 
 //clearAllTimeouts()
