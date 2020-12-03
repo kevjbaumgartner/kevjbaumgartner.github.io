@@ -37,11 +37,11 @@ function randomLetter(){
 
 //previewLetter()
 function previewLetter(){
-		$(".keyboardRow ul li:contains('" + String.fromCharCode(nextKey).toUpperCase() +"')").removeClass("flashNext");
+		$(".keyboardRow ul li:contains('" + String.fromCharCode(nextKey).toUpperCase() +"')").removeClass("REPLY_next");
 	do{
 		nextKey = randomLetter();
 	}while(nextKey == currentKey);
-	$(".keyboardRow ul li:contains('" + String.fromCharCode(nextKey).toUpperCase() +"')").addClass("flashNext");
+	$(".keyboardRow ul li:contains('" + String.fromCharCode(nextKey).toUpperCase() +"')").addClass("REPLY_next");
 	$("#pmLetter").text(String.fromCharCode(nextKey).toUpperCase());
 }
 
@@ -84,7 +84,7 @@ function startGame(){
 	resetThings();
 	clearAllTimeouts();
 	COUNTER_time = chosenTime;
-	updateAddKeyboard("de");
+	updateAddKeyboard("reduce");
 	updateLetter();
 	if(FLAG_previewmode == 1){
 		displayPM();
@@ -113,9 +113,9 @@ function endGame(){
 	$("#letter").text("");
 	delayWrite("letter", "again?")
 	updateRemoveKeyboard("highlight");
-	updateRemoveKeyboard("flashNext");
-	updateRemoveKeyboard("flashCorrect");
-	updateRemoveKeyboard("flashIncorrect");
+	updateRemoveKeyboard("REPLY_next");
+	updateRemoveKeyboard("REPLY_correct");
+	updateRemoveKeyboard("REPLY_incorrect");
 	displayFooter();
 	displayScoreboard();
 	displaySettings();
@@ -383,9 +383,9 @@ $(document).keydown(function(event){
 			COUNTER_correct++;
 			COUNTER_currentStreak++;
 			updateStreak();
-			$(".keyboardRow ul li:contains('" + String.fromCharCode(keystroke).toUpperCase() +"')").addClass("flashCorrect");
+			$(".keyboardRow ul li:contains('" + String.fromCharCode(keystroke).toUpperCase() +"')").addClass("REPLY_correct");
 			setTimeout(function(){ 
-				$(".keyboardRow ul li:contains('" + String.fromCharCode(keystroke).toUpperCase() +"')").removeClass("flashCorrect");
+				$(".keyboardRow ul li:contains('" + String.fromCharCode(keystroke).toUpperCase() +"')").removeClass("REPLY_correct");
 			}, 150);
 			updateLetter();
 			COUNTER_total++;
@@ -397,9 +397,9 @@ $(document).keydown(function(event){
 
 		else if(keystroke == 8){
 			event.preventDefault();
-			$("#keyboard").addClass("blink");
+			$("#keyboard").addClass("REPLY_blink");
 			setTimeout(function(){ 
-				$("#keyboard").removeClass("blink");
+				$("#keyboard").removeClass("REPLY_blink");
 			}, 150);
 			setTimeout(function(){
 				endGame();
@@ -411,9 +411,9 @@ $(document).keydown(function(event){
 			COUNTER_incorrect++;
 			COUNTER_currentStreak = 0;
 			updateStreak();
-			$(".keyboardRow ul li:contains('" + String.fromCharCode(keystroke).toUpperCase() +"')").addClass("ANIMATION_errorWiggle flashIncorrect");
+			$(".keyboardRow ul li:contains('" + String.fromCharCode(keystroke).toUpperCase() +"')").addClass("ANIMATION_errorWiggle REPLY_incorrect");
 			setTimeout(function(){
-				$(".keyboardRow ul li:contains('" + String.fromCharCode(keystroke).toUpperCase() +"')").removeClass("ANIMATION_errorWiggle flashIncorrect");
+				$(".keyboardRow ul li:contains('" + String.fromCharCode(keystroke).toUpperCase() +"')").removeClass("ANIMATION_errorWiggle REPLY_incorrect");
 			}, 200);
 			COUNTER_total++;
 		}

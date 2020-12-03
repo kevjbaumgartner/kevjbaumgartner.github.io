@@ -1,14 +1,86 @@
+/* Font Definitions */
 @font-face{
 	font-family: Roboto-Regular;
 	src: url("../fonts/Roboto-Regular.ttf");
 }
 
-.STYLE_key{
-	background-color: #E2E2E2;
-	border-radius: 5px;
-	color: #212121;
-	padding: 3px 6px;
-	font-size: 1vw;
+/* Elements */
+html, body{
+	font-family: Roboto-Regular;
+	background-color: #212121; 
+}
+
+/* String Relevant Stylization */
+.buttonDe{
+	opacity: 0.25;
+	cursor: default;
+}
+
+.hide{
+	opacity: 0;
+}
+
+.reduce{
+	opacity: 0.25;
+}
+
+.highlight{
+	opacity: 1.0 !important;
+}
+
+/* Reply Relevant Stylization */
+.REPLY_blink{
+	transition: all 0.1s ease-in-out;
+	opacity: 0.1 !important;
+}
+
+.REPLY_next{
+	opacity: 0.5 !important;
+	border-color: #92D0D6 !important;
+}
+
+.REPLY_correct{
+	opacity: 1.0 !important;
+	border-color: #19BD31 !important;
+}
+
+.REPLY_incorrect{
+	opacity: 1.0 !important;
+	border-color: #BD2319 !important;
+}
+
+/* JS Relevant Stylization */
+.cursorDisable{
+	pointer-events: none;
+}
+
+/* Animations */
+.ANIMATION_errorWiggle{
+	animation: ANIMATION_errorWiggle 0.25s ease;
+}
+
+@keyframes ANIMATION_errorWiggle{
+	10%, 90%{
+		transform: translate3d(-1.5px, -1.5px, 0);
+	}
+	20%, 80%{
+		transform: translate3d(1.5px, -1.5px, 0);
+	}
+	30%, 50%, 70%{
+		transform: translate3d(1.5px, 1.5px, 0);
+	}
+	40%, 60%{
+		transform: translate3d(-1.5px, 1.5px, 0);
+	}
+}
+
+/* Instructions */
+#instructions{
+	position: absolute;
+	text-align: left;
+	width: 20vw;
+	left: 40vw !important;
+	right: 40vw !important;
 }
 
 .instructionsLabel{
@@ -19,6 +91,15 @@
 	margin-bottom: 1vh;
 }
 
+.instructionsBigKey{
+	background-color: #E2E2E2;
+	border-radius: 5px;
+	color: #212121;
+	padding: 3px 6px;
+	font-size: 1vw;
+}
+
+/* Settings */
 #settings{
 	position: absolute;
 	text-align: left;
@@ -69,6 +150,7 @@
 	font-size: 2vw;
 }
 
+/* Streaks */
 #streaks{
 	position: absolute;
 	text-align: left;
@@ -101,20 +183,7 @@
 	font-size: 2vw;
 }
 
-.buttonDe{
-	opacity: 0.25;
-	cursor: default;
-}
-
-.cursorDisable{
-	pointer-events: none;
-}
-
-html, body, a{
-	font-family: Roboto-Regular;
-	background-color: #212121; 
-}
-
+/* Game Area */
 #wrap{
 	position: absolute;
 	display: flex;
@@ -122,6 +191,7 @@ html, body, a{
 	height: 100vh;
 }
 
+/* Timer Area */
 #time{
 	position: absolute;
 	width: 90vw;
@@ -140,6 +210,7 @@ html, body, a{
 	opacity: 0.25;
 }
 
+/* Letter Area */
 #letter{
 	position: absolute;
 	width: 90vw;
@@ -157,6 +228,7 @@ html, body, a{
 	transition: all 0.1s ease-in-out;
 }
 
+/* Preview Mode Letter Area */
 #pmLetter{
 	position: absolute;
 	width: 90vw;
@@ -175,6 +247,7 @@ html, body, a{
 	opacity: 0;
 }
 
+/* Keyboard Area */
 #keyboard{
 	position: absolute;
 	width: 90vw;
@@ -190,6 +263,26 @@ html, body, a{
 	user-select: none;
 }
 
+.keyboardRow{
+	margin: 1vh;
+}
+
+.keyboardRow ul li{
+	display: inline-block;
+	transition: all 0.1s ease-in-out;
+	border: 1px solid #E2E2E2;
+	color: #E2E2E2;
+	border-radius: 10px;
+	width: 4vw;
+	padding-top: 2vh;
+	padding-bottom: 2vh;
+	margin-left: 0.5vh;
+	margin-right: 0.5vh;
+	text-align: center;
+	vertical-align: middle;
+}
+
+/* Scoreboard */
 #scoreboard{
 	position: absolute;
 	width: 25vw;
@@ -214,6 +307,7 @@ html, body, a{
 	font-size: 3vw;
 }
 
+/* Footer Area */
 #footer{
 	position: absolute;
 	width: 90vw;
@@ -229,90 +323,4 @@ html, body, a{
 	user-select: none;
 	color: #E2E2E2;
 	transition: all 0.1s ease-in-out;
-}
-
-#instructions{
-	position: absolute;
-	text-align: left;
-	width: 20vw;
-	left: 40vw !important;
-	right: 40vw !important;
-}
-
-.keyboardRow{
-	margin: 1vh;
-}
-
-.keyboardRow ul li{
-	display: inline-block;
-	transition: all 0.1s ease-in-out;
-	border: 1px solid #E2E2E2;
-	color: #E2E2E2;
-	border-radius: 10px;
-	width: 4vw;
-	padding-top: 2vh;
-	padding-bottom: 2vh;
-	margin-left: 0.5vh;
-	margin-right: 0.5vh;
-	text-align: center;
-	vertical-align: middle;
-}
-
-.hide{
-	opacity: 0;
-}
-
-.reduce{
-	opacity: 0.25;
-}
-
-.de{
-	opacity: 0.25;
-}
-
-.blink{
-	transition: all 0.1s ease-in-out;
-	opacity: 0.1 !important;
-}
-
-.flash{
-	opacity: 1.0 !important;
-}
-
-.flashNext{
-	opacity: 0.5 !important;
-	border-color: #92D0D6 !important;
-}
-
-.flashCorrect{
-	opacity: 1.0 !important;
-	border-color: #19BD31 !important;
-}
-
-.flashIncorrect{
-	opacity: 1.0 !important;
-	border-color: #BD2319 !important;
-}
-
-.highlight{
-	opacity: 1.0 !important;
-}
-
-.ANIMATION_errorWiggle{
-	animation: errorWiggle 0.25s ease;
-}
-
-@keyframes errorWiggle{
-	10%, 90%{
-		transform: translate3d(-1.5px, -1.5px, 0);
-	}
-	20%, 80%{
-		transform: translate3d(1.5px, -1.5px, 0);
-	}
-	30%, 50%, 70%{
-		transform: translate3d(1.5px, 1.5px, 0);
-	}
-	40%, 60%{
-		transform: translate3d(-1.5px, 1.5px, 0);
-	}
 }
