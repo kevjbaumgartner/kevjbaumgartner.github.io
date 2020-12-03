@@ -14,6 +14,8 @@ var COUNTER_total = 0;
 var COUNTER_correct = 0;
 var COUNTER_incorrect = 0;
 var COUNTER_time = 0;
+var COUNTER_currentStreak = 0;
+var COUNTER_highestStreak = 0;
 
 //Calculations
 var CALC_accuracy = 0;
@@ -92,14 +94,18 @@ function startGame(){
 	displayTime();
 	displayKeyboard();
 	hideSettings();
+	hideStreaks();
+	hideCursor();
 	startTimer();
 	updateScoreboard();
+	updateStreak();
 	FLAG_started = 1;
 }
 
 //endGame()
 function endGame(){
 	updateScoreboard();
+	updateStreak();
 	if(FLAG_previewmode == 1){
 		hidePM();
 	}
@@ -108,14 +114,18 @@ function endGame(){
 	delayWrite("letter", "again?")
 	updateRemoveKeyboard("highlight");
 	updateRemoveKeyboard("flashNext");
+	updateRemoveKeyboard("flashCorrect");
+	updateRemoveKeyboard("flashIncorrect");
 	displayFooter();
 	displayScoreboard();
 	displaySettings();
+	displayStreaks();
+	showCursor();
 	hideTime();
 	hideKeyboard();
 	resetThings();
 	FLAG_started = 0;
-	COUNTER_time = 0
+	COUNTER_time = 0;
 }
 
 //resetThings()
@@ -126,6 +136,17 @@ function  resetThings(){
 	COUNTER_total = 0;
 	COUNTER_correct = 0;
 	COUNTER_incorrect = 0;
+	COUNTER_currentStreak = 0;
+}
+
+//showCursor()
+function showCursor(){
+	$("body").css("cursor", "default");
+}
+
+//hideCursor()
+function hideCursor(){
+	$("body").css("cursor", "none");
 }
 
 //displayFooter()
@@ -176,6 +197,16 @@ function displaySettings(){
 //hideSettings()
 function hideSettings(){
 	$("#settings").addClass("reduce cursorDisable");
+}
+
+//displayStreaks()
+function displayStreaks(){
+	$("#streaks").removeClass("reduce cursorDisable");
+}
+
+//hideStreaks()
+function hideStreaks(){
+	$("#streaks").addClass("reduce cursorDisable");
 }
 
 //changeTime(val)
@@ -231,6 +262,16 @@ function updateScoreboard(){
 	}
 }
 
+//updateStreak()
+function updateStreak(){
+	if(COUNTER_highestStreak < COUNTER_currentStreak){
+		COUNTER_highestStreak = COUNTER_currentStreak;
+		localStorage.setItem("storedHighest", COUNTER_highestStreak);
+	}
+	$("#streakCurrent").text(COUNTER_currentStreak);
+	$("#streakHighest").text(COUNTER_highestStreak);
+}
+
 //calculateAccuracy()
 function calculateAccuracy(){
 	CALC_accuracy = (100 * (COUNTER_correct / COUNTER_total)).toFixed(2);
@@ -271,6 +312,11 @@ function introduction(){
 
 	if(localStorage.getItem("storedPM") !== null){
 		togglePreviewMode(localStorage.getItem("storedPM"));
+	}
+
+	if(localStorage.getItem("storedHighest") !== null){
+		COUNTER_highestStreak = localStorage.getItem("storedHighest");
+		updateStreak();
 	}
 }
 
@@ -335,6 +381,8 @@ $(document).keydown(function(event){
 	else if(FLAG_started == 1){
 		if(keystroke == currentKey){
 			COUNTER_correct++;
+			COUNTER_currentStreak++;
+			updateStreak();
 			$(".keyboardRow ul li:contains('" + String.fromCharCode(keystroke).toUpperCase() +"')").addClass("flashCorrect");
 			setTimeout(function(){ 
 				$(".keyboardRow ul li:contains('" + String.fromCharCode(keystroke).toUpperCase() +"')").removeClass("flashCorrect");
@@ -361,6 +409,8 @@ $(document).keydown(function(event){
 
 		else if(keystroke != currentKey){
 			COUNTER_incorrect++;
+			COUNTER_currentStreak = 0;
+			updateStreak();
 			$(".keyboardRow ul li:contains('" + String.fromCharCode(keystroke).toUpperCase() +"')").addClass("ANIMATION_errorWiggle flashIncorrect");
 			setTimeout(function(){
 				$(".keyboardRow ul li:contains('" + String.fromCharCode(keystroke).toUpperCase() +"')").removeClass("ANIMATION_errorWiggle flashIncorrect");
