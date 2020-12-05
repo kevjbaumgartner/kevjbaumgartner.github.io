@@ -1,3 +1,4 @@
+/***** Global Stylizations *****/
 /* Font Definitions */
 @font-face{
 	font-family: Roboto-Regular;
@@ -10,48 +11,48 @@ html, body{
 	background-color: #212121; 
 }
 
-/* String Relevant Stylization */
-.buttonDe{
-	opacity: 0.25;
-	cursor: default;
-}
-
-.hide{
+/***** Dynamic Stylizations *****/
+/* Opacity Options */
+.OPT_opacityHide{
 	opacity: 0;
 }
 
-.reduce{
+.OPT_opacityReduce{
 	opacity: 0.25;
 }
 
-.highlight{
-	opacity: 1.0 !important;
+.OPT_opacityFull{
+	opacity: 1.0;
 }
 
-/* Reply Relevant Stylization */
-.REPLY_blink{
+/* CSS JS Animation */
+.CSSANIM_blink{
 	transition: all 0.1s ease-in-out;
 	opacity: 0.1 !important;
 }
 
-.REPLY_next{
+.CSSANIM_next{
 	opacity: 0.5 !important;
 	border-color: #92D0D6 !important;
 }
 
-.REPLY_correct{
+.CSSANIM_correct{
 	opacity: 1.0 !important;
 	border-color: #19BD31 !important;
 }
 
-.REPLY_incorrect{
+.CSSANIM_incorrect{
 	opacity: 1.0 !important;
 	border-color: #BD2319 !important;
 }
 
-/* JS Relevant Stylization */
-.cursorDisable{
+/* Interaction Relevant */
+.INTR_cursorDisable{
 	pointer-events: none;
+}
+
+.INTR_cursorHide{
+	cursor: none;
 }
 
 /* Animations */
@@ -72,6 +73,124 @@ html, body{
 	40%, 60%{
 		transform: translate3d(-1.5px, 1.5px, 0);
 	}
+}
+
+/***** Static Element Stylizations *****/
+/* Game Area */
+#wrap{
+	position: absolute;
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+}
+
+/* Timer */
+#time{
+	position: absolute;
+	width: 90vw;
+	height: 10vh;
+	left: 5vw;
+	right: 5vw;
+	top: 15vh;
+	bottom: 75vh;
+	text-align: center;
+	font-size: 5vw;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	color: #E2E2E2;
+	transition: all 0.1s ease-in-out;
+	opacity: 0.25;
+}
+
+/* Letter */
+#letter{
+	position: absolute;
+	width: 90vw;
+	height: 10vh;
+	left: 5vw;
+	right: 5vw;
+	top: 27.5vh;
+	bottom: 62.5vh;
+	text-align: center;
+	font-size: 5vw;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	color: #E2E2E2;
+	transition: all 0.1s ease-in-out;
+}
+
+/* Preview Mode Letter */
+#pmLetter{
+	position: absolute;
+	width: 90vw;
+	height: 10vh;
+	left: 8.5vw;
+	right: 1.5vw;
+	top: 32.5vh;
+	bottom: 57.5vh;
+	text-align: center;
+	font-size: 2vw;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	color: #92D0D6;
+	transition: all 0.1s ease-in-out;
+	opacity: 0;
+}
+
+/* Keyboard Area */
+#keyboard{
+	position: absolute;
+	width: 90vw;
+	height: 20vh;
+	left: 5vw;
+	right: 5vw;
+	top: 40vh;
+	bottom: 40vh;
+	text-align: center;
+	font-size: 2vw;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.keyboardRow{
+	margin: 1vh;
+}
+
+.keyboardRow ul li{
+	display: inline-block;
+	transition: all 0.1s ease-in-out;
+	border: 1px solid #E2E2E2;
+	color: #E2E2E2;
+	border-radius: 10px;
+	width: 4vw;
+	padding-top: 2vh;
+	padding-bottom: 2vh;
+	margin-left: 0.5vh;
+	margin-right: 0.5vh;
+	text-align: center;
+	vertical-align: middle;
+}
+
+/* Footer Area */
+#footer{
+	position: absolute;
+	width: 90vw;
+	height: 10vh;
+	left: 5vw;
+	right: 5vw;
+	top: 72.5vh;
+	bottom: 17.5vh;
+	text-align: center;
+	font-size: 1vw;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	color: #E2E2E2;
+	transition: all 0.1s ease-in-out;
 }
 
 /* Instructions */
@@ -99,6 +218,7 @@ html, body{
 	font-size: 1vw;
 }
 
+/***** Menu Stylizations *****/
 /* Settings */
 #settings{
 	position: absolute;
@@ -183,105 +303,6 @@ html, body{
 	font-size: 2vw;
 }
 
-/* Game Area */
-#wrap{
-	position: absolute;
-	display: flex;
-	width: 100vw;
-	height: 100vh;
-}
-
-/* Timer Area */
-#time{
-	position: absolute;
-	width: 90vw;
-	height: 10vh;
-	left: 5vw;
-	right: 5vw;
-	top: 15vh;
-	bottom: 75vh;
-	text-align: center;
-	font-size: 5vw;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	color: #E2E2E2;
-	transition: all 0.1s ease-in-out;
-	opacity: 0.25;
-}
-
-/* Letter Area */
-#letter{
-	position: absolute;
-	width: 90vw;
-	height: 10vh;
-	left: 5vw;
-	right: 5vw;
-	top: 27.5vh;
-	bottom: 62.5vh;
-	text-align: center;
-	font-size: 5vw;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	color: #E2E2E2;
-	transition: all 0.1s ease-in-out;
-}
-
-/* Preview Mode Letter Area */
-#pmLetter{
-	position: absolute;
-	width: 90vw;
-	height: 10vh;
-	left: 8.5vw;
-	right: 1.5vw;
-	top: 32.5vh;
-	bottom: 57.5vh;
-	text-align: center;
-	font-size: 2vw;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	color: #92D0D6;
-	transition: all 0.1s ease-in-out;
-	opacity: 0;
-}
-
-/* Keyboard Area */
-#keyboard{
-	position: absolute;
-	width: 90vw;
-	height: 20vh;
-	left: 5vw;
-	right: 5vw;
-	top: 40vh;
-	bottom: 40vh;
-	text-align: center;
-	font-size: 2vw;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
-
-.keyboardRow{
-	margin: 1vh;
-}
-
-.keyboardRow ul li{
-	display: inline-block;
-	transition: all 0.1s ease-in-out;
-	border: 1px solid #E2E2E2;
-	color: #E2E2E2;
-	border-radius: 10px;
-	width: 4vw;
-	padding-top: 2vh;
-	padding-bottom: 2vh;
-	margin-left: 0.5vh;
-	margin-right: 0.5vh;
-	text-align: center;
-	vertical-align: middle;
-}
-
 /* Scoreboard */
 #scoreboard{
 	position: absolute;
@@ -305,22 +326,4 @@ html, body{
 
 #scoreboardHeader{
 	font-size: 3vw;
-}
-
-/* Footer Area */
-#footer{
-	position: absolute;
-	width: 90vw;
-	height: 10vh;
-	left: 5vw;
-	right: 5vw;
-	top: 72.5vh;
-	bottom: 17.5vh;
-	text-align: center;
-	font-size: 1vw;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	color: #E2E2E2;
-	transition: all 0.1s ease-in-out;
 }

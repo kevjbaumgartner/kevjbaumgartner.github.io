@@ -37,18 +37,18 @@ function randomLetter(){
 
 //previewLetter()
 function previewLetter(){
-		$(".keyboardRow ul li:contains('" + String.fromCharCode(nextKey).toUpperCase() +"')").removeClass("REPLY_next");
+		$(".keyboardRow ul li:contains('" + String.fromCharCode(nextKey).toUpperCase() +"')").removeClass("CSSANIM_next");
 	do{
 		nextKey = randomLetter();
 	}while(nextKey == currentKey);
-	$(".keyboardRow ul li:contains('" + String.fromCharCode(nextKey).toUpperCase() +"')").addClass("REPLY_next");
+	$(".keyboardRow ul li:contains('" + String.fromCharCode(nextKey).toUpperCase() +"')").addClass("CSSANIM_next");
 	$("#pmLetter").text(String.fromCharCode(nextKey).toUpperCase());
 }
 
 //updateLetter()
 function updateLetter(){
 	prevKey = currentKey;
-	$(".keyboardRow ul li:contains('" + String.fromCharCode(currentKey).toUpperCase() +"')").removeClass("highlight");
+	$(".keyboardRow ul li:contains('" + String.fromCharCode(currentKey).toUpperCase() +"')").removeClass("OPT_opacityFull");
 
 	do{
 		currentKey = randomLetter();
@@ -61,7 +61,7 @@ function updateLetter(){
 		previewLetter();
 	}
 
-	$(".keyboardRow ul li:contains('" + String.fromCharCode(currentKey).toUpperCase() +"')").addClass("highlight");
+	$(".keyboardRow ul li:contains('" + String.fromCharCode(currentKey).toUpperCase() +"')").addClass("OPT_opacityFull");
 	$("#letter").text(String.fromCharCode(currentKey).toUpperCase());
 }
 
@@ -84,7 +84,7 @@ function startGame(){
 	resetThings();
 	clearAllTimeouts();
 	COUNTER_time = chosenTime;
-	updateAddKeyboard("reduce");
+	updateAddKeyboard("OPT_opacityReduce");
 	updateLetter();
 	if(FLAG_previewmode == 1){
 		displayPM();
@@ -112,10 +112,10 @@ function endGame(){
 	endTimer();
 	$("#letter").text("");
 	delayWrite("letter", "again?")
-	updateRemoveKeyboard("highlight");
-	updateRemoveKeyboard("REPLY_next");
-	updateRemoveKeyboard("REPLY_correct");
-	updateRemoveKeyboard("REPLY_incorrect");
+	updateRemoveKeyboard("OPT_opacityFull");
+	updateRemoveKeyboard("CSSANIM_next");
+	updateRemoveKeyboard("CSSANIM_correct");
+	updateRemoveKeyboard("CSSANIM_incorrect");
 	displayFooter();
 	displayScoreboard();
 	displaySettings();
@@ -141,22 +141,22 @@ function  resetThings(){
 
 //showCursor()
 function showCursor(){
-	$("body").css("cursor", "default");
+	$("body").removeClass("INTR_cursorHide");
 }
 
 //hideCursor()
 function hideCursor(){
-	$("body").css("cursor", "none");
+	$("body").addClass("INTR_cursorHide");
 }
 
 //displayFooter()
 function displayFooter(){
-	$("#footer").removeClass("reduce");
+	$("#footer").removeClass("OPT_opacityReduce");
 }
 
 //hideFooter()
 function hideFooter(){
-	$("#footer").addClass("reduce");
+	$("#footer").addClass("OPT_opacityReduce");
 }
 
 //displayKeyboard()
@@ -191,29 +191,29 @@ function hideTime(){
 
 //displaySettings()
 function displaySettings(){
-	$("#settings").removeClass("reduce cursorDisable");
+	$("#settings").removeClass("OPT_opacityReduce INTR_cursorDisable");
 }
 
 //hideSettings()
 function hideSettings(){
-	$("#settings").addClass("reduce cursorDisable");
+	$("#settings").addClass("OPT_opacityReduce INTR_cursorDisable");
 }
 
 //displayStreaks()
 function displayStreaks(){
-	$("#streaks").removeClass("reduce cursorDisable");
+	$("#streaks").removeClass("OPT_opacityReduce INTR_cursorDisable");
 }
 
 //hideStreaks()
 function hideStreaks(){
-	$("#streaks").addClass("reduce cursorDisable");
+	$("#streaks").addClass("OPT_opacityReduce INTR_cursorDisable");
 }
 
 //changeTime(val)
 function changeTime(val){
 	chosenTime = val;
-	$(".tb").addClass("buttonDe");
-	$(".tb:contains('" + val +"')").removeClass("buttonDe");
+	$(".tb").addClass("OPT_opacityReduce");
+	$(".tb:contains('" + val +"')").removeClass("OPT_opacityReduce");
 	localStorage.setItem("storedTime", val);
 }
 
@@ -221,14 +221,14 @@ function changeTime(val){
 function togglePreviewMode(val){
 	var temp;
 	FLAG_previewmode = val;
-	$(".pmb").addClass("buttonDe");
+	$(".pmb").addClass("OPT_opacityReduce");
 	if(val == 0){
 		temp = "off";
 	}
 	else{
 		temp = "on";
 	}
-	$(".pmb:contains('" + temp +"')").removeClass("buttonDe");
+	$(".pmb:contains('" + temp +"')").removeClass("OPT_opacityReduce");
 	localStorage.setItem("storedPM", val);
 }
 
@@ -383,9 +383,9 @@ $(document).keydown(function(event){
 			COUNTER_correct++;
 			COUNTER_currentStreak++;
 			updateStreak();
-			$(".keyboardRow ul li:contains('" + String.fromCharCode(keystroke).toUpperCase() +"')").addClass("REPLY_correct");
+			$(".keyboardRow ul li:contains('" + String.fromCharCode(keystroke).toUpperCase() +"')").addClass("CSSANIM_correct");
 			setTimeout(function(){ 
-				$(".keyboardRow ul li:contains('" + String.fromCharCode(keystroke).toUpperCase() +"')").removeClass("REPLY_correct");
+				$(".keyboardRow ul li:contains('" + String.fromCharCode(keystroke).toUpperCase() +"')").removeClass("CSSANIM_correct");
 			}, 150);
 			updateLetter();
 			COUNTER_total++;
@@ -397,9 +397,9 @@ $(document).keydown(function(event){
 
 		else if(keystroke == 8){
 			event.preventDefault();
-			$("#keyboard").addClass("REPLY_blink");
+			$("#keyboard").addClass("CSSANIM_blink");
 			setTimeout(function(){ 
-				$("#keyboard").removeClass("REPLY_blink");
+				$("#keyboard").removeClass("CSSANIM_blink");
 			}, 150);
 			setTimeout(function(){
 				endGame();
@@ -411,9 +411,9 @@ $(document).keydown(function(event){
 			COUNTER_incorrect++;
 			COUNTER_currentStreak = 0;
 			updateStreak();
-			$(".keyboardRow ul li:contains('" + String.fromCharCode(keystroke).toUpperCase() +"')").addClass("ANIMATION_errorWiggle REPLY_incorrect");
+			$(".keyboardRow ul li:contains('" + String.fromCharCode(keystroke).toUpperCase() +"')").addClass("ANIMATION_errorWiggle CSSANIM_incorrect");
 			setTimeout(function(){
-				$(".keyboardRow ul li:contains('" + String.fromCharCode(keystroke).toUpperCase() +"')").removeClass("ANIMATION_errorWiggle REPLY_incorrect");
+				$(".keyboardRow ul li:contains('" + String.fromCharCode(keystroke).toUpperCase() +"')").removeClass("ANIMATION_errorWiggle CSSANIM_incorrect");
 			}, 200);
 			COUNTER_total++;
 		}
