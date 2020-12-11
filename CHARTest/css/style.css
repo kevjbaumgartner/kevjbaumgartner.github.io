@@ -77,7 +77,7 @@ html, body{
 
 /***** Static Element Stylizations *****/
 /* Game Area */
-#wrap{
+#flexWrap{
 	position: absolute;
 	display: flex;
 	width: 100vw;
@@ -87,45 +87,39 @@ html, body{
 /* Timer */
 #time{
 	position: absolute;
-	width: 90vw;
-	height: 10vh;
-	left: 5vw;
-	right: 5vw;
+	left: 0vw;
+	right: 0vw;
 	top: 15vh;
 	bottom: 75vh;
 	text-align: center;
 	font-size: 5vw;
+	color: #E2E2E2;
+	opacity: 0.25;
 	-webkit-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	color: #E2E2E2;
 	transition: all 0.1s ease-in-out;
-	opacity: 0.25;
 }
 
 /* Letter */
 #letter{
 	position: absolute;
-	width: 90vw;
-	height: 10vh;
-	left: 5vw;
-	right: 5vw;
+	left: 0vw;
+	right: 0vw;
 	top: 27.5vh;
 	bottom: 62.5vh;
 	text-align: center;
 	font-size: 5vw;
+	color: #E2E2E2;
 	-webkit-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	color: #E2E2E2;
 	transition: all 0.1s ease-in-out;
 }
 
 /* Preview Mode Letter */
 #pmLetter{
 	position: absolute;
-	width: 90vw;
-	height: 10vh;
 	left: 8.5vw;
 	right: 1.5vw;
 	top: 32.5vh;
