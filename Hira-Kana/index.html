@@ -4,7 +4,7 @@
 	<!-- Meta Info -->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Hira-Kana | Minimalist Flashcards for Japanese</title>
+	<title>Hira-Kana | Minimalist Flashcards for the Japanese Alphabet</title>
 
 	<!-- Style Imports -->
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
@@ -19,13 +19,27 @@
 			<span class="fontButton chosen" onclick="fontChange('Kosugi-Regular')">Kosugi</span><span class="fontButton" onclick="fontChange('KosugiMaru-Regular')">Kosugi (soft)</span><span class="fontButton" onclick="fontChange('MPLUS1p-Regular')">MPLUS1p</span><span class="fontButton" onclick="fontChange('MPLUSRounded1c-Regular')">MPLUS1p (soft)</span><span class="fontButton" onclick="fontChange('NotoSansJP-Regular')">Noto (sans)</span><span class="fontButton" onclick="fontChange('NotoSerifJP-Regular')">Noto (serif)</span><span class="fontButton" onclick="fontChange('SawarabiGothic-Regular')">Sawarabi (sans)</span><span class="fontButton" onclick="fontChange('SawarabiMincho-Regular')">Sawarabi (serif)</span>
 			<p id="fontSample">こんにちは</p>
 		</div> -->
-		<div id="presentArea">
-			<div id="characterArea">
+		<div id="startArea">
+			<h2>press ENTER to start</h2>
+			<div id="settingsArea">
+				<h3>i know</h3>
+				<span class="langOneButton chosen" onclick="changeLangOne(0)">romaji</span><span class="langOneButton" onclick="changeLangOne(1)">hiragana</span><span class="langOneButton" onclick="changeLangOne(2)">katakana</span>
+				<h3>i want to practice</h3>
+				<span class="langTwoButton" onclick="changeLangTwo(0)">romaji</span><span class="langTwoButton chosen" onclick="changeLangTwo(1)">hiragana</span><span class="langTwoButton" onclick="changeLangTwo(2)">katakana</span>
+				<h3>i want </h3>
+				<span id="sizeSpan">
+					<h3 id="sizeNum">4</h3>
+					<input id="sizeSlide" type="range" min="2" max="10" step="1" value="4" oninput="updateSize(this.value)">
+				</span>
+				<h3> choices</h3>
+			</div>
+		</div>
+		<div id="presentArea" class="opacityHide">
+			<div id="characterArea">	
 				<span id="characterPresent"></span>
 			</div>
 			<div id="choiceArea">
 				<div id="choiceArray">
-					<span id="choiceX" class="choiceButton"></span>
 				</div>
 			</div>
 		</div>

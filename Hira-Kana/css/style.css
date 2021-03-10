@@ -102,15 +102,63 @@ html{
 	font-size: 3vw;
 }
 
+/* Start Area */
+#startArea{
+	display: inline-block;
+	position: absolute;
+	width: 50vw;
+	top: 45vh;
+	bottom: 45vh;
+	left: 25vw;
+	right: 25vw;
+	text-align: center;
+	transition: all 0.2s ease-in-out;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	font-size: 3vw;
+}
+
+#settingsArea{
+
+}
+
+.langOneButton, .langTwoButton{
+	display: inline-block;
+	padding: 10px;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+}
+
+.langOneButton:hover , .langTwoButton:hover{
+	background-color: #212121;
+	color: #FAFAFA;
+}
+
+#sizeNum{
+	background-color: #212121;
+	color: #FAFAFA;
+}
+
+#sizeSlide{
+	visibility: hidden;
+	cursor: pointer;
+}
+
+#sizeSpan:hover #sizeSlide{
+	visibility: visible;
+}
+
 /* Present Area */
 #presentArea{
 	display: inline-block;
 	position: absolute;
 	width: 50vw;
-	top: 41vh;
-	bottom: 41vh;
+	top: 39vh;
+	bottom: 39vh;
 	left: 25vw;
 	right: 25vw;
+	transition: all 0.2s ease-in-out;
 }
 
 /* Character Area */
@@ -137,6 +185,7 @@ html{
 	user-select: none;
 	font-size: 3vw;
 	padding: 1vh 0vw;
+	margin-top: 4vh;
 }
 
 .choiceButton{
@@ -144,6 +193,7 @@ html{
 	padding: 10px;
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
+	margin: 0vh 1.5vw;
 }
 
 .choiceButton:hover{
@@ -159,6 +209,11 @@ html{
 
 .answerFade{
 	opacity: 0.25;
+	pointer-events: none;
+}
+
+.opacityHide{
+	opacity: 0;
 	pointer-events: none;
 }
 

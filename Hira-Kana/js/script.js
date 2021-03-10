@@ -1,5 +1,6 @@
 //Global flags
-var langOne = 0; //Default English
+var inProgress = 0;
+var langOne = 0; //Default Romaji
 var langTwo = 1; //Default Hiragana
 var choiceSize = 4; //Default 4 - representative of n
 
@@ -9,13 +10,32 @@ var correct = 0;
 var incorrect = 0;
 
 //Character dictionary
+//1 - Romaji, 2 - Hiragana. 3 - Katakana
 var dictionary = [
 ["a","i","u","e","o","ka","ki","ku","ke","ko","sa","shi","su","se","so","ta","chi","tsu","te","to","na","ni","nu","ne","no","ha","hi","fu","he","ho","ma","mi","mu","me","mo","ya","yu","yo","ra","ri","ru","re","ro","wa","wo","n"],
 ["あ","い","う","え","お","か","き","く","け","こ","さ","し","す","せ","そ","た","ち","つ","て","と","な","に","ぬ","ね","の","は","ひ","ふ","へ","ほ","ま","み","む","め","も","や","ゆ","よ","ら","り","る","れ","ろ","わ","を","ん"],
 ["ア","イ","ウ","エ","オ","カ","キ","ク","ケ","コ","サ","シ","ス","セ","ソ","タ","チ","ツ","テ","ト","ナ","ニ","ヌ","ネ","ノ","ハ","ヒ","フ","ヘ","ホ","マ","ミ","ム","メ","モ","ヤ","ユ","ヨ","ラ","リ","ル","レ","ロ","ワ","ヲ","ン"]
 ];
 
+//Choice Arrays
+var characterArray;
+var scrambledArray;
+
 //Functions
+//changeLangOne(var name of the desired lang)
+function changeLangOne(lang){
+	langOne = lang;
+	$(".langOneButton").removeClass("chosen");
+	$(event.target).addClass("chosen");
+}
+
+//changeLangTwo(var name of the desired lang)
+function changeLangTwo(lang){
+	langTwo = lang;
+	$(".langTwoButton").removeClass("chosen");
+	$(event.target).addClass("chosen");
+}
+
 //fontChange(string name of the font-family)
 function fontChange(name){
 	$("#fontSample").css("font-family", name);
@@ -27,7 +47,8 @@ function fontChange(name){
 //nextRound()
 function nextRound(){
 	var presentedCharacter;
-	var characterArray = new Array(choiceSize);
+	characterArray = new Array(choiceSize);
+	scrambledArray = new Array(choiceSize);
 
 	//newCharacter(var name of the desired lang)
 	function newCharacter(lang){
@@ -80,20 +101,26 @@ function nextRound(){
 		//Ensure that the correct character exists as a choice
 		characterArray[characterArray.length - 1] = convertTo(presentedCharacter, langTwo, langOne);
 
-		//Fill an array with n position values to use as a pointer
+		//Fill an array with n position values to use as pointers
 		var randomArray = new Array(characterArray.length);
 		for(var i = 0; i < randomArray.length; i++){
 			randomArray[i] = i;
 		}
 
 		//Generate visible choice elements up to n times
-		//Remove the selected index at n from randomArray[] and repeat until all choices presented
+		//Remove the selected index at n from randomArray[] and repeat until all choices are placed into a new randomized array, scrambledArray[]
 		for(var i = 0; i < characterArray.length; i++){
 			var min = 0;
 			var max = randomArray.length - 1;
 			var temp = Math.floor(Math.random() * (max - min + 1) ) + min;
-			$("#choiceArray").append('<span id="choice' + randomArray[temp] + '" class="choiceButton" onclick="checkAnswer(' + randomArray[temp] + ')">' + characterArray[randomArray[temp]] + '</span>');
+
+			scrambledArray[i] = characterArray[randomArray[temp]];
 			randomArray.splice(temp, 1);
+		}
+
+		//Append n elements for each choice option in scrambledArray[]
+		for(var i = 0; i < scrambledArray.length; i++){
+			$("#choiceArray").append('<span id="choice' + i + '" class="choiceButton" onclick="checkAnswer(' + i + ')">' + scrambledArray[i] + '</span>');
 		}
 	}
 
@@ -112,10 +139,11 @@ function checkAnswer(choiceChosen){
 		correct++
 	}
 	else{
-		$(event.target).addClass("answerFade");
-		$("#presentArea").addClass("errorWiggle");
+		var point = "#choice" + choiceChosen;
+		$(point).addClass("answerFade");
+		$(point).addClass("errorWiggle");
 		setTimeout(function(){
-			$("#presentArea").removeClass("errorWiggle");
+			$(point).removeClass("errorWiggle");
 		}, 200);
 		incorrect++;
 	}
@@ -133,14 +161,74 @@ $(document).keydown(function(event){
 
 	try{
 		keystroke = event.keyCode || event.which;
-	} catch(err){
+	}catch(err){
 		alert(err.message);
 	}
 
-	if(keystroke == 13){
-		FLAG_started = 1;
-		startGame();
+	//Start on ENTER
+	if(keystroke == 13 && inProgress == 0){
+		startRound();
+	}
+	//End on ENTER if the round is in progress
+	else if(keystroke == 13 && inProgress == 1){
+		endRound();
+	}
+	//Check answer on NUMBER if the round is in progress
+	else if(keystroke != 13 && inProgress == 1){
+		switch(keystroke){
+			case 49:
+				checkAnswer(0);
+				break;
+			case 50:
+				checkAnswer(1);
+				break;
+			case 51:
+				checkAnswer(2);
+				break;
+			case 52:
+				checkAnswer(3);
+				break;
+			case 53:
+				checkAnswer(4);
+				break;
+			case 54:
+				checkAnswer(5);
+				break;
+			case 55:
+				checkAnswer(6);
+				break;
+			case 56:
+				checkAnswer(7);
+				break;
+			case 57:
+				checkAnswer(8);
+				break;
+			case 48:
+				checkAnswer(9);
+				break;
+			default:
+				break;
+		}	
 	}
 });
 
-nextRound();
+//startRound()
+function startRound(){
+	inProgress = 1;
+	nextRound();
+	$("#startArea").addClass("opacityHide");
+	$("#presentArea").removeClass("opacityHide");
+}
+
+//endRound()
+function endRound(){
+	inProgress = 0;
+	$("#startArea").removeClass("opacityHide");
+	$("#presentArea").addClass("opacityHide");
+}
+
+//updateSize(desired choiceSize value)
+function updateSize(size){
+	choiceSize = parseInt(size);
+	$("#sizeNum").text(choiceSize);
+}
