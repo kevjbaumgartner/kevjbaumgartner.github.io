@@ -107,8 +107,7 @@ html{
 	display: inline-block;
 	position: absolute;
 	width: 50vw;
-	top: 45vh;
-	bottom: 45vh;
+	top: 27.5vh;
 	left: 25vw;
 	right: 25vw;
 	text-align: center;
@@ -116,11 +115,15 @@ html{
 	-webkit-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	font-size: 3vw;
+	transition: all 0.2s ease-in-out;
 }
 
 #settingsArea{
+	transition: all 0.2s ease-in-out;
+}
 
+#settingsArea h3{
+	display: inline-block;
 }
 
 .langOneButton, .langTwoButton{
@@ -135,18 +138,44 @@ html{
 	color: #FAFAFA;
 }
 
+#sizeArea{
+	width: 100%;
+}
+
 #sizeNum{
 	background-color: #212121;
 	color: #FAFAFA;
+	transition: all 0.2s ease-in-out;
+	padding: 10px;
 }
 
 #sizeSlide{
-	visibility: hidden;
+	position: absolute;
+	opacity: 0;
+	pointer-events: none;
+	cursor: pointer;
+	-webkit-appearance: none;
+	appearance: none;
+	width: 10vw;
+	background: red;
+	outline: none;
+	transition: all 0.2s ease-in-out;
+	padding: 0;
+	margin: 0;
+}
+
+#sizeSlide::-webkit-slider-thumb{
+	-webkit-appearance: none;
+	appearance: none;
+	width: 1.5vw;
+	height: 4vh;
+	background: blue;
 	cursor: pointer;
 }
 
 #sizeSpan:hover #sizeSlide{
-	visibility: visible;
+	opacity: 1;
+	pointer-events: initial;
 }
 
 /* Present Area */
@@ -154,8 +183,7 @@ html{
 	display: inline-block;
 	position: absolute;
 	width: 50vw;
-	top: 39vh;
-	bottom: 39vh;
+	top: 38vh;
 	left: 25vw;
 	right: 25vw;
 	transition: all 0.2s ease-in-out;

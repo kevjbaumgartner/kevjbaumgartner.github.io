@@ -20,18 +20,21 @@
 			<p id="fontSample">こんにちは</p>
 		</div> -->
 		<div id="startArea">
-			<h2>press ENTER to start</h2>
+			<!-- <h2>press ENTER to start</h2> -->
 			<div id="settingsArea">
 				<h3>i know</h3>
 				<span class="langOneButton chosen" onclick="changeLangOne(0)">romaji</span><span class="langOneButton" onclick="changeLangOne(1)">hiragana</span><span class="langOneButton" onclick="changeLangOne(2)">katakana</span>
+				<br>
 				<h3>i want to practice</h3>
 				<span class="langTwoButton" onclick="changeLangTwo(0)">romaji</span><span class="langTwoButton chosen" onclick="changeLangTwo(1)">hiragana</span><span class="langTwoButton" onclick="changeLangTwo(2)">katakana</span>
-				<h3>i want </h3>
-				<span id="sizeSpan">
-					<h3 id="sizeNum">4</h3>
-					<input id="sizeSlide" type="range" min="2" max="10" step="1" value="4" oninput="updateSize(this.value)">
-				</span>
-				<h3> choices</h3>
+				<br>
+				<div id="sizeArea">
+					<h3>i want </h3>
+					<span id="sizeSpan">
+						<h3 id="sizeNum">4</h3><input id="sizeSlide" type="range" min="2" max="10" step="1" value="4" oninput="updateSize(this.value)">
+					</span>
+					<h3> choices</h3>
+				</div>
 			</div>
 		</div>
 		<div id="presentArea" class="opacityHide">
