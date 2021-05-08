@@ -1,5 +1,6 @@
 //Global flags
 var inProgress = 0;
+var settingsOpen = 0;
 var langOne = 0; //Default Romaji
 var langTwo = 1; //Default Hiragana
 var choiceSize = 4; //Default 4 - representative of n
@@ -155,6 +156,19 @@ function convertTo(inCharacter, inLang, outLang){
 	return dictionary[outLang][temp];
 }
 
+//Click detection
+$(document).click(function(event){
+
+	//If the settings menu is open
+	//Close it if the user clicks somewhere outside the area
+	if(event.target.id != "settingsArea"){
+		settingsOpen = 0;
+		$("#settingsShade").addClass("opacityHide");
+		$("#settingsArea").addClass("opacityHide");
+		$("#footerInstructions #2").text("Press ESC to show the settings")
+	}
+});
+
 //Keystroke detection
 $(document).keydown(function(event){
 	var keystroke;
@@ -165,16 +179,32 @@ $(document).keydown(function(event){
 		alert(err.message);
 	}
 
+	//Show settings menu on ESC
+	if(keystroke == 27 && settingsOpen == 0){
+		settingsOpen = 1;
+		$("#settingsShade").removeClass("opacityHide");
+		$("#settingsArea").removeClass("opacityHide");
+		$("#footerInstructions #2").text("Press ESC to hide the settings")
+	}
+
+	//Hide settings menu on ESC if it's open
+	else if(keystroke == 27 && settingsOpen == 1){
+		settingsOpen = 0;
+		$("#settingsShade").addClass("opacityHide");
+		$("#settingsArea").addClass("opacityHide");
+		$("#footerInstructions #2").text("Press ESC to show the settings")
+	}
+
 	//Start on ENTER
-	if(keystroke == 13 && inProgress == 0){
+	if(keystroke == 13 && inProgress == 0 && settingsOpen != 1){
 		startRound();
 	}
 	//End on ENTER if the round is in progress
-	else if(keystroke == 13 && inProgress == 1){
+	else if(keystroke == 13 && inProgress == 1 && settingsOpen != 1){
 		endRound();
 	}
 	//Check answer on NUMBER if the round is in progress
-	else if(keystroke != 13 && inProgress == 1){
+	else if(keystroke != 13 && inProgress == 1 && settingsOpen != 1){
 		switch(keystroke){
 			case 49:
 				checkAnswer(0);
@@ -218,6 +248,7 @@ function startRound(){
 	nextRound();
 	$("#startArea").addClass("opacityHide");
 	$("#presentArea").removeClass("opacityHide");
+	$("#footerInstructions #1").text("Press ENTER to return to the main menu")
 }
 
 //endRound()
@@ -225,10 +256,36 @@ function endRound(){
 	inProgress = 0;
 	$("#startArea").removeClass("opacityHide");
 	$("#presentArea").addClass("opacityHide");
+	$("#footerInstructions #1").text("Press ENTER to swap to your flash cards")
+}
+
+//increaseSize(value to increase choiceSize by)
+function increaseSize(val){
+	choiceSize += parseInt(val);
+	updateSize();
+	if(choiceSize == 10){
+		$("#sizeUp").addClass("inactiveButton")
+	}
+	else{
+		$("#sizeUp").removeClass("inactiveButton")
+		$("#sizeDown").removeClass("inactiveButton")
+	}
+}
+
+//decreaseSize(value to decrease choiceSize by)
+function decreaseSize(val){
+	choiceSize -= parseInt(val);
+	updateSize();
+	if(choiceSize == 2){
+		$("#sizeDown").addClass("inactiveButton")
+	}
+	else{
+		$("#sizeDown").removeClass("inactiveButton")
+		$("#sizeUp").removeClass("inactiveButton")
+	}
 }
 
 //updateSize(desired choiceSize value)
-function updateSize(size){
-	choiceSize = parseInt(size);
+function updateSize(){
 	$("#sizeNum").text(choiceSize);
 }

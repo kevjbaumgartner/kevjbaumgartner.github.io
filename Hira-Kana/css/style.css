@@ -41,14 +41,17 @@
 
 /* Open Sans (Default - UI) */
 @font-face{
-	font-family: "OpenSans-Regular";
-	src: url("../fonts/OpenSans-Regular.ttf");
+	font-family: "Roboto-Regular";
+	src: url("../fonts/Roboto-Regular.ttf");
 }
 
 /* Document Stylization */
 html{
 	background-color: #FAFAFA;
-	font-family: "OpenSans-Regular";
+	font-family: "Roboto-Regular";
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 /* Element Specific */
@@ -67,9 +70,6 @@ html{
 	text-align: center;
 	opacity: 0.25;
 	transition: all 0.2s ease-in-out;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
 }
 
 #fontSelection h2{
@@ -93,7 +93,7 @@ html{
 }
 
 .chosen{
-	background-color: #212121;
+	background-color: #212121 !important;
 	color: #FAFAFA;
 }
 
@@ -104,78 +104,144 @@ html{
 
 /* Start Area */
 #startArea{
-	display: inline-block;
-	position: absolute;
-	width: 50vw;
-	top: 27.5vh;
-	left: 25vw;
-	right: 25vw;
+	margin: auto auto;
 	text-align: center;
 	transition: all 0.2s ease-in-out;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	transition: all 0.2s ease-in-out;
 }
 
+/* Start Menu */
+#startMenu{
+	font-size: 1vw;
+	text-align: center;
+}
+
+#startHeader{
+	font-size: 2vw;
+}
+
+#startInstructions{
+	text-align: center;
+	font-size: 1vw;
+	padding: 1.5vh 0vw 1.5vh 0vw;
+	opacity: 0.5;
+}
+
+#firstTimeInstructions p{
+	
+}
+
+#firstTimeInstructions p:nth-last-of-type(1){
+	margin: 0.25vh 0vw;
+}
+
+/* Settings Area */
 #settingsArea{
+	position: absolute;
+	text-align: right;
+	transition: all 0.2s ease-in-out;
+	padding: 0;
+	border: 1px solid #212121;
+	background-color: #FAFAFA;
+	width: 25vw;
+	left: 37.5vw;
+	right: 37.5vw;
+	top: 40vh;
+	z-index: 9000;
+}
+
+#settingsShade{
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0,0.2);
 	transition: all 0.2s ease-in-out;
 }
 
-#settingsArea h3{
-	display: inline-block;
+#settingsHeader{
+	text-align: center;
+	font-size: 1vw;
+	padding: 1.5vh 0vw 1.5vh 0vw;
+}
+
+#settingsArea table{
+	margin: 0 auto;
+}
+
+.settingsTableLabel{
+	text-align: right;
+	font-size: 1vw;
+	padding: 0vh 0vw 1.5vh 1vw;
+}
+
+.settingsTableProperties{
+	text-align: left;
+	font-size: 1vw;
+	padding: 0vh 1vw 1.5vh 0.5vw;
 }
 
 .langOneButton, .langTwoButton{
 	display: inline-block;
-	padding: 10px;
+	padding: 1vh 0.5vw;
 	cursor: pointer;
-	transition: all 0.2s ease-in-out;
+	background-color: #FAFAFA;
+	margin: 0vh 0.5vw;
+	font-size: 0.75vw;
+	transition: all 0.1s ease-in-out;
+	border: 1px solid #212121;
 }
 
-.langOneButton:hover , .langTwoButton:hover{
-	background-color: #212121;
-	color: #FAFAFA;
-}
-
-#sizeArea{
-	width: 100%;
-}
-
-#sizeNum{
-	background-color: #212121;
-	color: #FAFAFA;
-	transition: all 0.2s ease-in-out;
-	padding: 10px;
-}
-
-#sizeSlide{
-	position: absolute;
-	opacity: 0;
-	pointer-events: none;
-	cursor: pointer;
-	-webkit-appearance: none;
-	appearance: none;
-	width: 10vw;
-	background: red;
-	outline: none;
-	transition: all 0.2s ease-in-out;
-	padding: 0;
+.langOneButton:nth-last-of-type(3), .langTwoButton:nth-last-of-type(3){
 	margin: 0;
 }
 
-#sizeSlide::-webkit-slider-thumb{
-	-webkit-appearance: none;
-	appearance: none;
-	width: 1.5vw;
-	height: 4vh;
-	background: blue;
-	cursor: pointer;
+.langOneButton:nth-last-of-type(1), .langTwoButton:nth-last-of-type(1){
+	margin: 0;
 }
 
-#sizeSpan:hover #sizeSlide{
-	opacity: 1;
-	pointer-events: initial;
+.langOneButton:hover, .langTwoButton:hover{
+	background-color: #212121;
+	color: #FAFAFA;
+}
+
+/* Size Area */
+#sizeArea{
+	padding: 0px 10px;
+}
+
+#sizeNum{
+	display: inline-block;
+	padding: 1vh 0.5vw;
+	background-color: #FAFAFA;
+	font-size: 0.75vw;
+	transition: all 0.1s ease-in-out;
+	border-top: 1px solid #212121;
+	border-bottom: 1px solid #212121;
+}
+
+.sizeButton{
+	display: inline-block;
+	padding: 1vh 0.5vw;
+	cursor: pointer;
+	background-color: #FAFAFA;
+	font-size: 0.75vw;
+	transition: all 0.1s ease-in-out;
+}
+
+.sizeButton:nth-last-of-type(3), .sizeButton:nth-last-of-type(3){
+	border-left: 1px solid #212121;
+	border-top: 1px solid #212121;
+	border-bottom: 1px solid #212121;
+}
+
+.sizeButton:nth-last-of-type(1), .sizeButton:nth-last-of-type(1){
+	border-right: 1px solid #212121;
+	border-top: 1px solid #212121;
+	border-bottom: 1px solid #212121;
+}
+
+.sizeButton:hover{
+	background-color: #212121;
+	color: #FAFAFA;
 }
 
 /* Present Area */
@@ -195,9 +261,6 @@ html{
 	width: 100%;
 	text-align: center;
 	transition: all 0.2s ease-in-out;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
 	font-size: 3vw;
 	padding: 1vh 0vw;
 }
@@ -208,9 +271,6 @@ html{
 	width: 100%;
 	text-align: center;
 	transition: all 0.2s ease-in-out;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
 	font-size: 3vw;
 	padding: 1vh 0vw;
 	margin-top: 4vh;
@@ -229,6 +289,23 @@ html{
 	color: #FAFAFA;
 }
 
+/* Global Elements */
+#footerInstructions{
+	position: absolute;
+	display: inline-block;
+	text-align: center;
+	font-size: 0.75vw;
+	padding: 0vh 0vw 1.5vh 0vw;
+	opacity: 0.5;
+	bottom: 5vh;
+	left: 0vw;
+	right: 0vw;
+}
+
+#footerInstructions p{
+	margin: 0.25vh 0vw;
+}
+
 /* Feedback Stylizations */
 .answerIncorrect{
 	background-color: red !important;
@@ -243,6 +320,13 @@ html{
 .opacityHide{
 	opacity: 0;
 	pointer-events: none;
+	transition: all 0.2s ease-in-out;
+}
+
+.inactiveButton{
+	color: rgba(0,0,0,0.25);
+	pointer-events: none;
+	cursor: default;
 }
 
 /* Animations */
