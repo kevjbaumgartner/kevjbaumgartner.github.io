@@ -28,6 +28,7 @@ function changeLangOne(lang){
 	langOne = lang;
 	$(".langOneButton").removeClass("chosen");
 	$(event.target).addClass("chosen");
+	newRound();
 }
 
 //changeLangTwo(var name of the desired lang)
@@ -35,14 +36,7 @@ function changeLangTwo(lang){
 	langTwo = lang;
 	$(".langTwoButton").removeClass("chosen");
 	$(event.target).addClass("chosen");
-}
-
-//fontChange(string name of the font-family)
-function fontChange(name){
-	$("#fontSample").css("font-family", name);
-	$("#characterArea").css("font-family", name);
-	$(".fontButton").removeClass("chosen");
-	$(event.target).addClass("chosen");
+	newRound();
 }
 
 //nextRound()
@@ -136,15 +130,18 @@ function nextRound(){
 //checkAnswer(int value of the choice they chose)
 function checkAnswer(choiceChosen){
 	if($('#choice' + choiceChosen).text() == convertTo($("#characterPresent").text(), langTwo, langOne)){
-		nextRound();
+		var point = "#choice" + choiceChosen;
+		$(point).addClass("answerCorrect");
+		setTimeout(function(){
+			newRound();
+		}, 200);
 		correct++
 	}
 	else{
 		var point = "#choice" + choiceChosen;
-		$(point).addClass("answerFade");
-		$(point).addClass("errorWiggle");
+		$(point).addClass("errorWiggle answerIncorrect");
 		setTimeout(function(){
-			$(point).removeClass("errorWiggle");
+			$(point).removeClass("errorWiggle answerIncorrect");
 		}, 200);
 		incorrect++;
 	}
@@ -160,8 +157,8 @@ function convertTo(inCharacter, inLang, outLang){
 $(document).click(function(event){
 
 	//If the settings menu is open
-	//Close it if the user clicks somewhere outside the area
-	if(event.target.id != "settingsArea"){
+	//Close it if the user clicks somewhere outside the settings menu (aka the shade)
+	if(event.target.id == "settingsShade"){
 		settingsOpen = 0;
 		$("#settingsShade").addClass("opacityHide");
 		$("#settingsArea").addClass("opacityHide");
@@ -172,7 +169,6 @@ $(document).click(function(event){
 //Keystroke detection
 $(document).keydown(function(event){
 	var keystroke;
-
 	try{
 		keystroke = event.keyCode || event.which;
 	}catch(err){
@@ -201,7 +197,7 @@ $(document).keydown(function(event){
 	}
 	//End on ENTER if the round is in progress
 	else if(keystroke == 13 && inProgress == 1 && settingsOpen != 1){
-		endRound();
+		newRound();
 	}
 	//Check answer on NUMBER if the round is in progress
 	else if(keystroke != 13 && inProgress == 1 && settingsOpen != 1){
@@ -248,16 +244,26 @@ function startRound(){
 	nextRound();
 	$("#startArea").addClass("opacityHide");
 	$("#presentArea").removeClass("opacityHide");
-	$("#footerInstructions #1").text("Press ENTER to return to the main menu")
+	$("#footerInstructions #1").text("Press ENTER to generate a new set of flash cards")
 }
 
-//endRound()
-function endRound(){
-	inProgress = 0;
-	$("#startArea").removeClass("opacityHide");
-	$("#presentArea").addClass("opacityHide");
-	$("#footerInstructions #1").text("Press ENTER to swap to your flash cards")
+//newRound()
+//Equivalent to nextRound() with the inclusion of a smooth round transition
+function newRound(){
+	$("#blinkScreen").removeClass("opacityHide");
+	setTimeout(function(){
+		$("#blinkScreen").addClass("opacityHide");
+		nextRound();
+	}, 200);	
 }
+
+//endRound() - DEPRECATED
+// function endRound(){
+// 	inProgress = 0;
+// 	$("#startArea").removeClass("opacityHide");
+// 	$("#presentArea").addClass("opacityHide");
+// 	$("#footerInstructions #1").text("Press ENTER to swap to your flash cards")
+// }
 
 //increaseSize(value to increase choiceSize by)
 function increaseSize(val){
@@ -287,5 +293,6 @@ function decreaseSize(val){
 
 //updateSize(desired choiceSize value)
 function updateSize(){
+	newRound();
 	$("#sizeNum").text(choiceSize);
 }

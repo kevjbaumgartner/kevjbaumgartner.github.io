@@ -1,45 +1,12 @@
+/* Colour Scheme */
+/* White - #FAFAFA */
+/* Black - #212121 */
+/* Grey - #555555 */
+/* Red - #C3272B */
+/* Green - #4CAF50 */
+
 /* Font Face Imports - Google Fonts */
-/* Kasugi (Default - Nihongo) */
-@font-face{
-	font-family: "Kosugi-Regular";
-	src: url("../fonts/Kosugi-Regular.ttf");
-}
-@font-face{
-	font-family: "KosugiMaru-Regular";
-	src: url("../fonts/KosugiMaru-Regular.ttf");
-}
-
-/* MPLUS1p */
-@font-face{
-	font-family: "MPLUS1p-Regular";
-	src: url("../fonts/MPLUS1p-Regular.ttf");
-}
-@font-face{
-	font-family: "MPLUSRounded1c-Regular";
-	src: url("../fonts/MPLUSRounded1c-Regular.ttf");
-}
-
-/* Noto */
-@font-face{
-	font-family: "NotoSansJP-Regular";
-	src: url("../fonts/NotoSansJP-Regular.otf");
-}
-@font-face{
-	font-family: "NotoSerifJP-Regular";
-	src: url("../fonts/NotoSerifJP-Regular.otf");
-}
-
-/* Sawarabi */
-@font-face{
-	font-family: "SawarabiGothic-Regular";
-	src: url("../fonts/SawarabiGothic-Regular.ttf");
-}
-@font-face{
-	font-family: "SawarabiMincho-Regular";
-	src: url("../fonts/SawarabiMincho-Regular.ttf");
-}
-
-/* Open Sans (Default - UI) */
+/* Roboto (Default - UI) */
 @font-face{
 	font-family: "Roboto-Regular";
 	src: url("../fonts/Roboto-Regular.ttf");
@@ -54,52 +21,11 @@ html{
 	user-select: none;
 }
 
-/* Element Specific */
 #flexWrap{
 	position: absolute;
 	display: flex;
 	width: 100vw;
 	height: 100vh;
-}
-
-/* Font Selection */
-#fontSelection{
-	display: inline-block;
-	position: absolute;
-	width: 100vw;
-	text-align: center;
-	opacity: 0.25;
-	transition: all 0.2s ease-in-out;
-}
-
-#fontSelection h2{
-	font-size: 1.5vw;
-}
-
-#fontSelection:hover{
-	opacity: 1;
-}
-
-.fontButton{
-	display: inline-block;
-	padding: 10px;
-	cursor: pointer;
-	transition: all 0.2s ease-in-out;
-}
-
-.fontButton:hover{
-	background-color: #212121;
-	color: #FAFAFA;
-}
-
-.chosen{
-	background-color: #212121 !important;
-	color: #FAFAFA;
-}
-
-#fontSample{
-	font-family: "Kosugi-Regular";
-	font-size: 3vw;
 }
 
 /* Start Area */
@@ -109,7 +35,6 @@ html{
 	transition: all 0.2s ease-in-out;
 }
 
-/* Start Menu */
 #startMenu{
 	font-size: 1vw;
 	text-align: center;
@@ -123,15 +48,7 @@ html{
 	text-align: center;
 	font-size: 1vw;
 	padding: 1.5vh 0vw 1.5vh 0vw;
-	opacity: 0.5;
-}
-
-#firstTimeInstructions p{
-	
-}
-
-#firstTimeInstructions p:nth-last-of-type(1){
-	margin: 0.25vh 0vw;
+	color: #555555 !important;
 }
 
 /* Settings Area */
@@ -142,9 +59,9 @@ html{
 	padding: 0;
 	border: 1px solid #212121;
 	background-color: #FAFAFA;
-	width: 25vw;
-	left: 37.5vw;
-	right: 37.5vw;
+	width: 34vw;
+	left: 33vw;
+	right: 33vw;
 	top: 40vh;
 	z-index: 9000;
 }
@@ -155,6 +72,7 @@ html{
 	height: 100vh;
 	background-color: rgba(0,0,0,0.2);
 	transition: all 0.2s ease-in-out;
+	z-index: 8500;
 }
 
 #settingsHeader{
@@ -185,22 +103,30 @@ html{
 	cursor: pointer;
 	background-color: #FAFAFA;
 	margin: 0vh 0.5vw;
-	font-size: 0.75vw;
+	font-size: 1vw;
 	transition: all 0.1s ease-in-out;
 	border: 1px solid #212121;
 }
 
-.langOneButton:nth-last-of-type(3), .langTwoButton:nth-last-of-type(3){
-	margin: 0;
-}
-
-.langOneButton:nth-last-of-type(1), .langTwoButton:nth-last-of-type(1){
+.langOneButton:nth-last-of-type(1), .langTwoButton:nth-last-of-type(1), .langOneButton:nth-last-of-type(3), .langTwoButton:nth-last-of-type(3){
 	margin: 0;
 }
 
 .langOneButton:hover, .langTwoButton:hover{
 	background-color: #212121;
 	color: #FAFAFA;
+}
+
+.chosen{
+	background-color: #212121 !important;
+	color: #FAFAFA;
+}
+
+#settingsAreaFootNote{
+	text-align: center;
+	padding: 0vh 0vw 1.5vh 0vw;
+	color: #555555;
+	font-size: 0.8vw;
 }
 
 /* Size Area */
@@ -212,7 +138,7 @@ html{
 	display: inline-block;
 	padding: 1vh 0.5vw;
 	background-color: #FAFAFA;
-	font-size: 0.75vw;
+	font-size: 1vw
 	transition: all 0.1s ease-in-out;
 	border-top: 1px solid #212121;
 	border-bottom: 1px solid #212121;
@@ -223,20 +149,21 @@ html{
 	padding: 1vh 0.5vw;
 	cursor: pointer;
 	background-color: #FAFAFA;
-	font-size: 0.75vw;
+	font-size: 1vw;
 	transition: all 0.1s ease-in-out;
+}
+
+.sizeButton:nth-last-of-type(1), .sizeButton:nth-last-of-type(1), .sizeButton:nth-last-of-type(3), .sizeButton:nth-last-of-type(3){
+	border-top: 1px solid #212121;
+	border-bottom: 1px solid #212121;
 }
 
 .sizeButton:nth-last-of-type(3), .sizeButton:nth-last-of-type(3){
 	border-left: 1px solid #212121;
-	border-top: 1px solid #212121;
-	border-bottom: 1px solid #212121;
 }
 
 .sizeButton:nth-last-of-type(1), .sizeButton:nth-last-of-type(1){
 	border-right: 1px solid #212121;
-	border-top: 1px solid #212121;
-	border-bottom: 1px solid #212121;
 }
 
 .sizeButton:hover{
@@ -280,7 +207,7 @@ html{
 	display: inline-block;
 	padding: 10px;
 	cursor: pointer;
-	transition: all 0.2s ease-in-out;
+	transition: all 0.1s ease-in-out;
 	margin: 0vh 1.5vw;
 }
 
@@ -294,21 +221,36 @@ html{
 	position: absolute;
 	display: inline-block;
 	text-align: center;
-	font-size: 0.75vw;
+	font-size: 1vw;
 	padding: 0vh 0vw 1.5vh 0vw;
-	opacity: 0.5;
+	color: #555555 !important;
 	bottom: 5vh;
 	left: 0vw;
 	right: 0vw;
+	z-index: 8001;
 }
 
 #footerInstructions p{
 	margin: 0.25vh 0vw;
 }
 
+#blinkScreen{
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	background-color: #FAFAFA;
+	transition: all 0.2s ease-in-out;
+	z-index: 8000;
+}
+
 /* Feedback Stylizations */
+.answerCorrect{
+	background-color: #4CAF50 !important;
+	color: #FAFAFA;
+}
+
 .answerIncorrect{
-	background-color: red !important;
+	background-color: #C3272B !important;
 	color: #FAFAFA;
 }
 
@@ -324,7 +266,7 @@ html{
 }
 
 .inactiveButton{
-	color: rgba(0,0,0,0.25);
+	color: #555555;
 	pointer-events: none;
 	cursor: default;
 }

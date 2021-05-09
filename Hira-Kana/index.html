@@ -14,19 +14,12 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+	<div id="blinkScreen" class="opacityHide"></div>
 	<div id="flexWrap">
-		<!-- <div id="fontSelection">
-			<span class="fontButton chosen" onclick="fontChange('Kosugi-Regular')">Kosugi</span><span class="fontButton" onclick="fontChange('KosugiMaru-Regular')">Kosugi (soft)</span><span class="fontButton" onclick="fontChange('MPLUS1p-Regular')">MPLUS1p</span><span class="fontButton" onclick="fontChange('MPLUSRounded1c-Regular')">MPLUS1p (soft)</span><span class="fontButton" onclick="fontChange('NotoSansJP-Regular')">Noto (sans)</span><span class="fontButton" onclick="fontChange('NotoSerifJP-Regular')">Noto (serif)</span><span class="fontButton" onclick="fontChange('SawarabiGothic-Regular')">Sawarabi (sans)</span><span class="fontButton" onclick="fontChange('SawarabiMincho-Regular')">Sawarabi (serif)</span>
-			<p id="fontSample">こんにちは</p>
-		</div> -->
 		<div id="startArea">
 			<div id="startMenu">
 				<h3 id="startHeader">Hira-Kana</h3>
 				<p id="startInstructions">A simpler way to practice Japanese Hiragana and Katakana memorization</p>
-				<!-- <div id="firstTimeInstructions">
-					<p>ENTER to start</p>
-					<p>ESC for settings</p>
-				</div> -->
 			</div>
 		</div>
 		<span id="settingsShade" class="opacityHide"></span>
@@ -54,6 +47,7 @@
 					</td>
 				</tr>
 			</table>
+			<p id="settingsAreaFootNote">Note: changing the alphabet settings midgame<br>will generate a new set of flash cards</p>
 		</div>
 		<div id="presentArea" class="opacityHide">
 			<div id="characterArea">	
@@ -68,9 +62,6 @@
 			<p id="1">Press ENTER to swap to your flash cards</p>
 			<p id="2">Press ESC to show the settings</p>
 		</div>
-		<!-- <div id="typeArea">
-			<input type="text" name="">
-		</div> -->
 	</div>
 </body>
 
