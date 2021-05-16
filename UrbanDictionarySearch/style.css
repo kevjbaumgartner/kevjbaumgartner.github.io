@@ -1,0 +1,176 @@
+body{
+	text-align: center;
+    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #E1E1E3;
+    color: #FAFAFA;
+}
+
+h1, p{
+	padding: 0;
+	margin: 0;
+}
+
+.highlight{
+	background-color: #EFFF00;
+	color: #121212;
+	font-weight: bold;
+}
+
+.specialtext{
+	color: #134FE6;
+	font-weight: bold;
+	font-family: "Lora", Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+#dictionarySectionHeader{
+	padding: 1%;
+	margin: 0 auto;
+	background-color: #1D2439;
+	width: 60%;
+}
+
+#dictionarySectionSearch{
+	padding: 1%;
+	margin: 0 auto;
+	background-color: #FAFAFA;
+	width: 60%;
+	color: #121212;
+	border-bottom: 5px solid #E1E1E3;
+	text-align: left;
+}
+
+#dictionarySectionDetail{
+	padding: 1%;
+	margin: 0 auto;
+	background-color: #FAFAFA;
+	width: 60%;
+	color: #121212;
+	overflow: hidden;
+}
+
+#dictionarySectionDetailSub{
+	font-size: 1.5em;
+	text-align: left;
+	margin-bottom: 1%;
+}
+
+#dictionarySectionSearchTitle{
+	font-size: 1.5em;
+	text-align: left;
+	margin-bottom: 1%;
+}
+
+#dictionarySectionSearchBar{
+	width: 50%;
+	border: none;
+	padding: 1% 2%;
+	font-size: 1.8em;
+	outline: 1px solid #E1E1E3;
+}
+
+#dictionarySectionSearchGoButton{
+	border: none;
+	padding: 1% 2%;
+	font-size: 1.8em;
+	background-color: #1D2439;
+	color: #FAFAFA;
+	cursor: pointer;
+}
+
+#dictionarySectionSearchGoButton:hover{
+	color: #EFFF00;
+}
+
+#dictionarySectionHeaderTitle{
+	font-size: 2em;
+	letter-spacing: 1.5px;
+}
+
+#dictionarySectionHeaderText{
+	font-size: 1.2em;
+}
+
+#dictionarySectionDetailText, #dictionarySectionDetailExample{
+	text-align: justify;
+	line-height: 1.5;
+	color: #2C353C;
+	padding: 0;
+	margin: 1%;
+}
+
+#dictionarySectionDetailText{
+}
+
+.sectionHide{
+	display: none;
+}
+
+#dictionarySectionDetailInfoSub{
+	font-size: 1.5em;
+	text-align: left;
+	margin-bottom: 1%;
+}
+
+#dictionarySectionDetailInfoAccuracy{
+	font-weight: bold;
+	letter-spacing: 1px;
+}
+
+#dictionarySectionDetailInfoAccuracyDisclaimer{
+	font-size: 0.8em;
+	font-weight: 200;
+	color: #343434;
+	letter-spacing: 1px;
+}
+
+#accuracyVoteTotal{
+	font-weight: 300;
+	color: #454545;
+	letter-spacing: 0.5px;
+}
+
+#accuracyChart{
+	padding: 1%;
+	display: initial !important;
+	width: 100% !important;
+	height: auto !important;
+	pointer-events: none !important; 
+}
+
+.center{
+	text-align: center !important;
+}
+
+#dictionarySectionDetailNavigation{
+	text-align: center;
+	font-size: 1.2em;
+}
+
+.navButton{
+	color: #121212;
+	border: none;
+	background-color: transparent;
+	font-size: 1.2em;
+	padding: 0 1%;
+	margin: 0;
+}
+
+.navButton:hover{
+	color: #134FE6;
+}
+
+.navButton:hover:active{
+	color: #1D2439;
+}
+
+#dictionarySectionDetailItems{
+	width: 70%;
+	float: left;
+}
+
+#dictionarySectionDetailInfo{
+	width: 30%;
+	float: right;
+}

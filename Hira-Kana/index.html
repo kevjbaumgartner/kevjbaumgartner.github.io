@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Meta Info -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Hira-Kana | Minimalist Flashcards for the Japanese Alphabet</title>
+
+	<!-- Style Imports -->
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- JQuery Import -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+	<div id="blinkScreen" class="opacityHide"></div>
+	<div id="flexWrap">
+		<div id="startArea">
+			<div id="startMenu">
+				<h3 id="startHeader">Hira-Kana</h3>
+				<p id="startInstructions">A simpler way to practice Japanese Hiragana and Katakana memorization</p>
+			</div>
+		</div>
+		<span id="settingsShade" class="opacityHide"></span>
+		<div id="settingsArea" class="opacityHide">
+			<h3 id="settingsHeader">Settings</h3>
+			<table>
+				<tr>
+					<td class="settingsTableLabel">I know</td>
+					<td class="settingsTableProperties">
+						<span class="langOneButton chosen" onclick="changeLangOne(0)">ROMAJI</span><span class="langOneButton" onclick="changeLangOne(1)">HIRAGANA</span><span class="langOneButton" onclick="changeLangOne(2)">KATAKANA</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="settingsTableLabel">I want to practice</td>
+					<td class="settingsTableProperties">
+						<span class="langTwoButton" onclick="changeLangTwo(0)">ROMAJI</span><span class="langTwoButton chosen" onclick="changeLangTwo(1)">HIRAGANA</span><span class="langTwoButton" onclick="changeLangTwo(2)">KATAKANA</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="settingsTableLabel">
+						# of choices
+					</td>
+					<td class="settingsTableProperties">
+						<span id="sizeDown" class="sizeButton" onclick="decreaseSize(1)">-</span><span id="sizeNum">4</span><span id="sizeUp" class="sizeButton" onclick="increaseSize(1)">+</span>
+					</td>
+				</tr>
+			</table>
+			<p id="settingsAreaFootNote">Note: changing the alphabet settings midgame<br>will generate a new set of flash cards</p>
+		</div>
+		<div id="presentArea" class="opacityHide">
+			<div id="characterArea">	
+				<span id="characterPresent"></span>
+			</div>
+			<div id="choiceArea">
+				<div id="choiceArray">
+				</div>
+			</div>
+		</div>
+		<div id="footerInstructions">
+			<p id="1">Press ENTER to swap to your flash cards</p>
+			<p id="2">Press ESC to show the settings</p>
+		</div>
+	</div>
+</body>
+
+	<!-- Script Imports -->
+	<script type="text/javascript" src="js/script.js"></script>
+</html>

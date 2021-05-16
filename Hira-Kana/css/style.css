@@ -1,0 +1,292 @@
+/* Colour Scheme */
+/* White - #FAFAFA */
+/* Black - #212121 */
+/* Grey - #555555 */
+/* Red - #C3272B */
+/* Green - #4CAF50 */
+
+/* Font Face Imports - Google Fonts */
+/* Roboto (Default - UI) */
+@font-face{
+	font-family: "Roboto-Regular";
+	src: url("../fonts/Roboto-Regular.ttf");
+}
+
+/* Document Stylization */
+html{
+	background-color: #FAFAFA;
+	font-family: "Roboto-Regular";
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#flexWrap{
+	position: absolute;
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+}
+
+/* Start Area */
+#startArea{
+	margin: auto auto;
+	text-align: center;
+	transition: all 0.2s ease-in-out;
+}
+
+#startMenu{
+	font-size: 1vw;
+	text-align: center;
+}
+
+#startHeader{
+	font-size: 2vw;
+}
+
+#startInstructions{
+	text-align: center;
+	font-size: 1vw;
+	padding: 1.5vh 0vw 1.5vh 0vw;
+	color: #555555 !important;
+}
+
+/* Settings Area */
+#settingsArea{
+	position: absolute;
+	text-align: right;
+	transition: all 0.2s ease-in-out;
+	padding: 0;
+	border: 1px solid #212121;
+	background-color: #FAFAFA;
+	width: 34vw;
+	left: 33vw;
+	right: 33vw;
+	top: 40vh;
+	z-index: 9000;
+}
+
+#settingsShade{
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0,0.2);
+	transition: all 0.2s ease-in-out;
+	z-index: 8500;
+}
+
+#settingsHeader{
+	text-align: center;
+	font-size: 1vw;
+	padding: 1.5vh 0vw 1.5vh 0vw;
+}
+
+#settingsArea table{
+	margin: 0 auto;
+}
+
+.settingsTableLabel{
+	text-align: right;
+	font-size: 1vw;
+	padding: 0vh 0vw 1.5vh 1vw;
+}
+
+.settingsTableProperties{
+	text-align: left;
+	font-size: 1vw;
+	padding: 0vh 1vw 1.5vh 0.5vw;
+}
+
+.langOneButton, .langTwoButton{
+	display: inline-block;
+	padding: 1vh 0.5vw;
+	cursor: pointer;
+	background-color: #FAFAFA;
+	margin: 0vh 0.5vw;
+	font-size: 1vw;
+	transition: all 0.1s ease-in-out;
+	border: 1px solid #212121;
+}
+
+.langOneButton:nth-last-of-type(1), .langTwoButton:nth-last-of-type(1), .langOneButton:nth-last-of-type(3), .langTwoButton:nth-last-of-type(3){
+	margin: 0;
+}
+
+.langOneButton:hover, .langTwoButton:hover{
+	background-color: #212121;
+	color: #FAFAFA;
+}
+
+.chosen{
+	background-color: #212121 !important;
+	color: #FAFAFA;
+}
+
+#settingsAreaFootNote{
+	text-align: center;
+	padding: 0vh 0vw 1.5vh 0vw;
+	color: #555555;
+	font-size: 0.8vw;
+}
+
+/* Size Area */
+#sizeArea{
+	padding: 0px 10px;
+}
+
+#sizeNum{
+	display: inline-block;
+	padding: 1vh 0.5vw;
+	background-color: #FAFAFA;
+	font-size: 1vw
+	transition: all 0.1s ease-in-out;
+	border-top: 1px solid #212121;
+	border-bottom: 1px solid #212121;
+}
+
+.sizeButton{
+	display: inline-block;
+	padding: 1vh 0.5vw;
+	cursor: pointer;
+	background-color: #FAFAFA;
+	font-size: 1vw;
+	transition: all 0.1s ease-in-out;
+}
+
+.sizeButton:nth-last-of-type(1), .sizeButton:nth-last-of-type(1), .sizeButton:nth-last-of-type(3), .sizeButton:nth-last-of-type(3){
+	border-top: 1px solid #212121;
+	border-bottom: 1px solid #212121;
+}
+
+.sizeButton:nth-last-of-type(3), .sizeButton:nth-last-of-type(3){
+	border-left: 1px solid #212121;
+}
+
+.sizeButton:nth-last-of-type(1), .sizeButton:nth-last-of-type(1){
+	border-right: 1px solid #212121;
+}
+
+.sizeButton:hover{
+	background-color: #212121;
+	color: #FAFAFA;
+}
+
+/* Present Area */
+#presentArea{
+	display: inline-block;
+	position: absolute;
+	width: 50vw;
+	top: 38vh;
+	left: 25vw;
+	right: 25vw;
+	transition: all 0.2s ease-in-out;
+}
+
+/* Character Area */
+#characterArea{
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	transition: all 0.2s ease-in-out;
+	font-size: 3vw;
+	padding: 1vh 0vw;
+}
+
+/* Choice Area */
+#choiceArea{
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	transition: all 0.2s ease-in-out;
+	font-size: 3vw;
+	padding: 1vh 0vw;
+	margin-top: 4vh;
+}
+
+.choiceButton{
+	display: inline-block;
+	padding: 10px;
+	cursor: pointer;
+	transition: all 0.1s ease-in-out;
+	margin: 0vh 1.5vw;
+}
+
+.choiceButton:hover{
+	background-color: #212121;
+	color: #FAFAFA;
+}
+
+/* Global Elements */
+#footerInstructions{
+	position: absolute;
+	display: inline-block;
+	text-align: center;
+	font-size: 1vw;
+	padding: 0vh 0vw 1.5vh 0vw;
+	color: #555555 !important;
+	bottom: 5vh;
+	left: 0vw;
+	right: 0vw;
+	z-index: 8001;
+}
+
+#footerInstructions p{
+	margin: 0.25vh 0vw;
+}
+
+#blinkScreen{
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	background-color: #FAFAFA;
+	transition: all 0.2s ease-in-out;
+	z-index: 8000;
+}
+
+/* Feedback Stylizations */
+.answerCorrect{
+	background-color: #4CAF50 !important;
+	color: #FAFAFA;
+}
+
+.answerIncorrect{
+	background-color: #C3272B !important;
+	color: #FAFAFA;
+}
+
+.answerFade{
+	opacity: 0.25;
+	pointer-events: none;
+}
+
+.opacityHide{
+	opacity: 0;
+	pointer-events: none;
+	transition: all 0.2s ease-in-out;
+}
+
+.inactiveButton{
+	color: #555555;
+	pointer-events: none;
+	cursor: default;
+}
+
+/* Animations */
+.errorWiggle{
+	animation: errorWiggle 0.25s ease;
+}
+
+@keyframes errorWiggle{
+	10%, 90%{
+		transform: translate3d(-1.0px, -1.0px, 0);
+	}
+	20%, 80%{
+		transform: translate3d(1.0px, -1.0px, 0);
+	}
+	30%, 50%, 70%{
+		transform: translate3d(1.0px, 1.0px, 0);
+	}
+	40%, 60%{
+		transform: translate3d(-1.0px, 1.0px, 0);
+	}
+}

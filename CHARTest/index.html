@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Meta Info -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CHAR Test</title>
+
+	<!-- Style Imports -->
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- JQuery Import -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+	<div id="flexWrap">
+		<div id="settings">
+			<label id="settingsHeader">settings</label>
+			<br><br>
+			<p class="settingsLabel">time:</p>
+			<span class="settingsButton tb OPT_opacityReduce" id="time15" onclick="changeTime(15)">15</span>
+			<span class="settingsButton tb OPT_opacityReduce" id="time30" onclick="changeTime(30)">30</span>
+			<span class="settingsButton tb" id="time60" onclick="changeTime(60)">60</span>
+			<br>
+			<p class="settingsLabel">preview mode:</p>
+			<span class="settingsButton pmb OPT_opacityReduce" id="pmOn" onclick="togglePreviewMode(1)">on</span>
+			<span class="settingsButton pmb" id="pmOff" onclick="togglePreviewMode(0)">off</span>
+		</div>
+		<div id="streaks">
+			<label id="streakHeader">streak</label>
+			<br><br>
+			<label class="streakLabel">current:</label> <span id="streakCurrent">0</span>
+			<br>
+			<label class="streakLabel">highest:</label> <span id="streakHighest">0</span>
+		</div>
+		<div id="time" class="OPT_opacityReduce"></div>
+		<div id="letter"></div>
+		<div id="pmLetter"></div>
+		<div id="keyboard">
+			<div class="keyboardRow" id="keyboardRowOne">
+				<ul>
+					<li>Q</li><li>W</li><li>E</li><li>R</li><li>T</li><li>Y</li><li>U</li><li>I</li><li>O</li><li>P</li>
+				</ul>
+			</div>
+			<div class="keyboardRow" id="keyboardRowTwo">
+				<ul>
+					<li>A</li><li>S</li><li>D</li><li>F</li><li>G</li><li>H</li><li>J</li><li>K</li><li>L</li>
+				</ul>
+			</div>
+			<div class="keyboardRow" id="keyboardRowThree">
+				<ul>
+					<li>Z</li><li>X</li><li>C</li><li>V</li><li>B</li><li>N</li><li>M</li>
+				</ul>
+			</div>
+		</div>
+		<div id="scoreboard">
+			<label id="scoreboardHeader">score</label>
+			<br><br>
+			<label>Correct: </label><span id="correct">0</span>
+			<br>
+			<label>Incorrect: </label><span id="incorrect">0</span>
+			<br><br>
+			<label>Accuracy: </label><span id="accuracy">0.00%</span>
+			<br>
+			<label>Letters Per Second: </label><span id="lps">0 lps</span>
+		</div>
+		<div id="footer">
+			press the corresponding letters on your keyboard as they appear on screen
+			<br><br>
+			<div id="instructions">
+				<span class="instructionsBigKey">enter</span> <label class="instructionsLabel">to start/finish</label>
+				<br>
+				<span class="instructionsBigKey instructionsLabel">backspace</span> <label class="instructionsLabel">to quickly restart</label>
+			</div>
+		</div>
+	</div>
+</body>
+
+	<!-- Script Imports -->
+	<script type="text/javascript" src="js/script.js"></script>
+</html>
