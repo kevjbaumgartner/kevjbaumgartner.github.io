@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Meta Information -->
+	<meta charset="utf-8">
+	<title>Simple Search Dictionary</title>
+
+	<!-- Style Imports -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="section" id="dictionarySection">
+		<div id="dictionarySectionHeader">
+			<h1 id="dictionarySectionHeaderTitle">Search on <span class="highlight">Urban Dictionary</h1>
+			<p id="dictionarySectionHeaderText">enter a word and get the top results from Urban Dictionary </p>
+		</div>
+		<div id="dictionarySectionSearch">
+			<h1 id="dictionarySectionSearchTitle">What would you like to know:</h1>
+			<input type="text" id="dictionarySectionSearchBar" class="specialtext">
+			<span id="dictionarySectionSearchGoButton">Search</span>
+		</div>
+		<div id="dictionarySectionDetail" class="sectionHide">
+			<div id="dictionarySectionDetailItems">
+				<h1 id="dictionarySectionDetailSub">What it means:</h1>
+				<h1 id="dictionarySectionDetailTitle" class="specialtext">Enter something</h1>
+				<p id="dictionarySectionDetailText"></p>
+				<p id="dictionarySectionDetailExample"></p>
+			</div>
+			<div id="dictionarySectionDetailInfo">
+				<div id="dictionarySectionDetailNavigation">
+					<button class="navButton" onclick="navLeft()"><i class="fas fa-chevron-circle-left"></i></button>Result #<label id="indexText"></label><button class="navButton" onclick="navRight()"><i class="fas fa-chevron-circle-right"></i></button>
+				</div>
+				<canvas id="accuracyChart"></canvas>
+				<br>
+				<label>Urban Accuracy: </label><span id="dictionarySectionDetailInfoAccuracy"></span>%
+				<br>
+				<span id="dictionarySectionDetailInfoAccuracyDisclaimer">(determined by <label id="accuracyVoteTotal"></label> user votes)</span>
+			</div>
+		</div>
+	</div>
+
+	<!-- Script Imports -->
+	<script type="text/javascript" src="chart.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</body>
+</html>
