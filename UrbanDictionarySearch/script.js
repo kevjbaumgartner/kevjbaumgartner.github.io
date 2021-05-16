@@ -29,7 +29,7 @@ function resetIndex(){
 function updateDefinition(){
 	var string = document.getElementById("dictionarySectionSearchBar").value;
 	var apiRequest = new XMLHttpRequest();
-	apiRequest.open("GET", "http://api.urbandictionary.com/v0/define?term=" + string, true);
+	apiRequest.open("GET", "https://api.urbandictionary.com/v0/define?term=" + string, true);
 	apiRequest.onload = function(){
 		apiData = JSON.parse(this.response);
 
