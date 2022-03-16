@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6a9dc46d.css",
+    "main.js": "/static/js/main.eb5cefd7.js",
+    "static/media/fa-solid-900.ttf": "/static/media/fa-solid-900.79da213423ac0def2058.ttf",
+    "static/media/tile-mtgdeckbuilder.jpg": "/static/media/tile-mtgdeckbuilder.1a4e2a56041186a34e66.jpg",
+    "static/media/fa-brands-400.ttf": "/static/media/fa-brands-400.0a1b701f5563c2288281.ttf",
+    "static/media/kevinbaumgartner_resume.pdf": "/static/media/kevinbaumgartner_resume.08c93ae6ab88db707f51.pdf",
+    "static/media/fa-solid-900.woff2": "/static/media/fa-solid-900.4896d4b04430cc3dfb06.woff2",
+    "static/media/fa-brands-400.woff2": "/static/media/fa-brands-400.f77bcc98bb7468c8b15a.woff2",
+    "static/media/tile-spacestagram.jpg": "/static/media/tile-spacestagram.34f12e61fb30e64501b0.jpg",
+    "static/media/fa-regular-400.ttf": "/static/media/fa-regular-400.15d98c18221c8bcb2334.ttf",
+    "static/media/tile-udsearch.jpg": "/static/media/tile-udsearch.b51898b0e7a7243d6921.jpg",
+    "static/media/tile-chartest.jpg": "/static/media/tile-chartest.4beb8a8ffad273863a10.jpg",
+    "static/media/fa-regular-400.woff2": "/static/media/fa-regular-400.d79c2ec96ab9ff1161a2.woff2",
+    "static/media/tile-portfolio.jpg": "/static/media/tile-portfolio.670beaab90c570f37833.jpg",
+    "static/media/profile.jpg": "/static/media/profile.6ae72cbe5fe04799dc22.jpg",
+    "static/media/tile-hirakana.jpg": "/static/media/tile-hirakana.206dc6a643dc1e21e026.jpg",
+    "static/media/fa-v4compatibility.ttf": "/static/media/fa-v4compatibility.52eba2c567c521b8d58a.ttf",
+    "static/media/fa-v4compatibility.woff2": "/static/media/fa-v4compatibility.3d503f89ccaf1b224aa5.woff2",
+    "index.html": "/index.html",
+    "main.6a9dc46d.css.map": "/static/css/main.6a9dc46d.css.map",
+    "main.eb5cefd7.js.map": "/static/js/main.eb5cefd7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6a9dc46d.css",
+    "static/js/main.eb5cefd7.js"
+  ]
+}
