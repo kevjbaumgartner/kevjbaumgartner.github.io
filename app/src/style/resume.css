@@ -1,0 +1,115 @@
+/* Resume */
+#Resume {}
+
+#Resume #exp-download {
+	width: 70%;
+	max-width: 1000px;
+	line-height: 100%;
+	text-align: center;
+	font-size: calc(0.8rem + 0.8vmin);
+	border-radius: 10px;
+	padding: calc(0.5rem + 0.5vmin) 0;
+	transition: 0.2s background-color ease-in-out;
+	pointer-events: none;
+	margin: calc(1rem + 1vmin) 0;
+	background-color: #f5f5f5;
+}
+
+#Resume #exp-download a {
+	color: #000000;
+	text-decoration: none;
+	transition: 0.2s color ease-in-out;
+	pointer-events: auto;
+}
+
+#Resume #exp-download:hover {
+	background-color: #aa0000;
+}
+
+#Resume #exp-download a i {
+	color: #aa0000;
+	transition: 0.2s color ease-in-out;
+}
+
+#Resume #exp-download:hover a, #Resume #exp-download:hover a i {
+	color: #fefefe;
+}
+
+#Resume .exp-header {
+	width: 70%;
+	max-width: 1000px;
+	font-size: calc(0.8rem + 0.8vmin);
+	line-height: 100%;
+	letter-spacing: calc(0.1rem + 0.15vmin);
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #aa0000;
+	margin-bottom: calc(0.5rem + 0.5vmin);
+}
+
+#Resume .exp-block {
+	width: 70%;
+	max-width: 1000px;
+	display: flex;
+	flex-direction: column;
+}
+
+#Resume .exp-block:last-child {
+	margin-bottom: calc(1rem + 1vmin);
+}
+
+#Resume .exp-block hr {
+	border-top: 1px solid rgba(0, 0, 0, 0.25);
+	margin: calc(0.5rem + 0.5vmin) 0;
+
+	/* HTML5 <hr /> rendering issue fix */
+	margin-left: 0;
+	margin-right: 0;
+}
+
+#Resume .exp-block:not(:last-child) {
+	margin-bottom: calc(1rem + 1vmin);
+}
+
+#Resume .exp-item {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+#Resume .exp-item .exp-item-title {
+	width: 60%;
+	font-weight: bold;
+	font-size: calc(0.8rem + 0.8vmin);
+}
+
+#Resume .exp-item .exp-item-date {
+	width: 40%;
+	text-align: right;
+	text-transform: uppercase;
+	font-size: calc(0.7rem + 0.7vmin);
+	line-height: 100%;
+}
+
+#Resume .exp-item .exp-item-employer {
+	width: 100%;
+	margin-bottom: calc(0.25rem + 0.25vmin);
+	font-size: calc(0.8rem + 0.8vmin);
+}
+
+#Resume .exp-item .exp-item-school {
+	width: 100%;
+	font-size: calc(0.8rem + 0.8vmin);
+}
+
+#Resume .exp-item .exp-item-list {
+	padding: 0;
+	margin: 0;
+	list-style-position: inside;
+	font-size: calc(0.7rem + 0.7vmin);
+}
+
+#Resume .exp-item .exp-item-list li::marker {
+	font-size: calc(0.5rem + 0.5vmin);
+	margin: 0;
+}

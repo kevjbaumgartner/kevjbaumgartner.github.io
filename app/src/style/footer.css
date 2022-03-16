@@ -1,0 +1,34 @@
+/* Footer */
+#Footer {
+	position: sticky;
+	bottom: 0px;
+	width: 100%;
+	height: 5%;
+	user-select: none;
+	background-color: #fefefe;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 2000;
+}
+
+#Footer a {
+	color: #000000;
+	text-decoration: none;
+	transition: 0.2s color, 0.2s opacity ease-in-out;
+	opacity: 0.5;
+}
+
+#Footer a:not(:last-child) {
+	margin-right: calc(1rem + 0.5vmin);
+}
+
+#Footer a:hover {
+	color: #aa0000;
+	opacity: 1;
+}
+
+#Footer i {
+	font-size: calc(1rem + 0.5vmin);
+	line-height: 100%;
+}

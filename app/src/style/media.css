@@ -1,0 +1,206 @@
+/* XSmall devices */
+@media (max-width: 575.8px) {
+	/* #App {
+		background-color: red;
+	} */
+
+	.AppContent-Center {
+		align-items: unset;
+		align-content: center;
+	}
+
+	#Landing #logo {
+		margin-bottom: calc(1rem + 1vmin);
+	}
+
+	#Landing #menu {
+		margin-left: unset;
+		width: 90%;
+	}
+
+	#About #written {
+		width: 90%;
+		font-size: calc(0.8rem + 0.8vmin);
+	}
+
+	#About #written #intro {
+		font-size: calc(1rem + 1vmin);
+	}
+
+	#About #jots {
+		width: 90%;
+		font-size: calc(0.8rem + 0.8vmin);
+	}
+
+	#About #jots .jot-title {
+		font-size: calc(1rem + 1vmin);
+	}
+
+	#Projects #tiles {
+		width: 90%;
+	}
+
+	#Projects #tiles .tile {
+		margin: 0 0 calc(1rem + 1vmin) 0 !important;
+		width: 100%;
+		max-height: fit-content;
+	}
+
+	#Projects #tiles .tile-title {
+		font-size: calc(1rem + 1vmin);
+	}
+
+	#Projects #tiles .tile-text {
+		font-size: calc(0.9rem + 0.9vmin);
+	}
+
+	#Projects #tiles .tile:last-child {
+		margin: 0 !important;
+	}
+
+	#Projects #tiles .tile-stack i {
+		font-size: calc(1rem + 1vmin);
+	}
+
+	#Projects #tiles .tile-link {
+		font-size: calc(0.9rem + 0.9vmin);
+	}
+
+	#Resume #exp-download, #Resume .exp-block, #Resume .exp-header {
+		width: 90%;
+	}
+
+	#Resume #exp-download, #Resume .exp-header {
+		font-size: calc(0.9rem + 0.9vmin);
+	}
+
+	#Resume .exp-item .exp-item-title, #Resume .exp-item .exp-item-employer, #Resume .exp-item .exp-item-school {
+		font-size: calc(0.9rem + 0.9vmin);
+	}
+
+	#Resume .exp-item .exp-item-list, #Resume .exp-item .exp-item-date {
+		font-size: calc(0.8rem + 0.8vmin);
+	}
+
+	#Resume .exp-item .exp-item-title {
+		width: 50%;
+	}
+
+	#Resume .exp-item .exp-item-date {
+		width: 50%;
+	}
+}
+
+/* Small devices */
+@media (min-width: 576px) and (max-width: 767.8px) {
+	/* #App {
+		background-color: orange;
+	} */
+}
+
+/* Medium devices */
+@media (min-width: 768px) and (max-width: 991.8px) and (min-height: 576px) {
+	/* #App {
+		background-color: yellow;
+	} */
+
+	.AppContent-Center {
+		align-items: unset;
+		align-content: center;
+	}
+
+	#Landing #logo {
+		margin-bottom: calc(1rem + 1vmin);
+	}
+
+	#Landing #menu {
+		margin-left: unset;
+		width: 80%;
+	}
+
+	#About #written {
+		width: 80%;
+		font-size: calc(0.8rem + 0.8vmin);
+	}
+
+	#About #written #intro {
+		font-size: calc(1rem + 1vmin);
+	}
+
+	#About #jots {
+		width: 80%;
+		font-size: calc(0.8rem + 0.8vmin);
+	}
+
+	#About #jots .jot-title {
+		font-size: calc(1rem + 1vmin);
+	}
+
+	#Projects #tiles {
+		width: 80%;
+	}
+
+	#Projects #tiles .tile {
+		margin: 0 0 calc(1rem + 1vmin) 0 !important;
+		width: 100%;
+		max-height: fit-content;
+	}
+
+	#Projects #tiles .tile-title {
+		font-size: calc(1rem + 1vmin);
+	}
+
+	#Projects #tiles .tile-text {
+		font-size: calc(0.9rem + 0.9vmin);
+	}
+
+	#Projects #tiles .tile:last-child {
+		margin: 0 !important;
+	}
+
+	#Projects #tiles .tile-stack i {
+		font-size: calc(1rem + 1vmin);
+	}
+
+	#Projects #tiles .tile-link {
+		font-size: calc(0.9rem + 0.9vmin);
+	}
+
+	#Resume #exp-download, #Resume .exp-block, #Resume .exp-header {
+		width: 80%;
+	}
+
+	#Resume #exp-download, #Resume .exp-header {
+		font-size: calc(0.9rem + 0.9vmin);
+	}
+
+	#Resume .exp-item .exp-item-title, #Resume .exp-item .exp-item-employer, #Resume .exp-item .exp-item-school {
+		font-size: calc(0.9rem + 0.9vmin);
+	}
+
+	#Resume .exp-item .exp-item-list, #Resume .exp-item .exp-item-date {
+		font-size: calc(0.8rem + 0.8vmin);
+	}
+
+	#Resume .exp-item .exp-item-title {
+		width: 50%;
+	}
+
+	#Resume .exp-item .exp-item-date {
+		width: 50%;
+	}
+}
+
+/* Large devices */
+@media (min-width: 992px) and (max-width: 1199.8px) {
+	/* #App {
+		background-color: green;
+	} */
+}
+
+/* XLarge devices */
+@media (min-width: 1200px) {
+	/* #App {
+		background-color: blue;
+	} */
+}

@@ -1,0 +1,63 @@
+/* Landing */
+#Landing {}
+
+#Landing #logo {
+	width: auto;
+	height: 40%;
+	display: flex;
+	pointer-events: none;
+	justify-content: center;
+	max-height: 500px;
+	max-width: 500px
+}
+
+#Landing #logo img {
+	max-width: 100%;
+	max-height: 100%;
+	border-radius: 50%;
+}
+
+#Landing #menu {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	margin-left: calc(1rem + 1vmin);
+	max-height: 500px;
+	max-width: 500px
+}
+
+#Landing #menu .text {
+	font-size: calc(1.5rem + 1.5vmin);
+	line-height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+#Landing #menu #links-social {
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	display: flex;
+}
+
+#Landing #menu #links-social a {
+	color: #000000;
+	text-decoration: none;
+	transition: 0.2s color, 0.2s opacity ease-in-out;
+	opacity: 0.5;
+}
+
+#Landing #menu #links-social a:not(:last-child) {
+	margin-right: calc(1rem + 1vmin);
+}
+
+#Landing #menu #links-social a:hover {
+	color: #aa0000;
+	opacity: 1;
+}
+
+#Landing #menu #links-social i {
+	font-size: calc(2rem + 0.5vmin);
+	line-height: 100%;
+}

@@ -1,0 +1,83 @@
+/* About */
+#About {}
+
+#About #logo {
+	width: auto;
+	height: 30%;
+	display: flex;
+	pointer-events: none;
+	justify-content: center;
+	max-height: 400px;
+	max-width: 400px;
+	margin: calc(1rem + 1vmin) 0;
+}
+
+#About #logo img {
+	max-width: 100%;
+	max-height: 100%;
+	border-radius: 50%;
+}
+
+#About #written, #jots {
+	width: 70%;
+	max-width: 1000px;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	margin-bottom: calc(1rem + 1vmin);
+}
+
+#About #written p {
+	margin: 0;
+	padding: 0;
+}
+
+#About #jots ul {
+	list-style-position: inside;
+	padding: 0;
+	margin: 0;
+}
+
+#About #jots li::marker {
+	font-size: calc(0.5rem + 0.5vmin);
+	margin: 0;
+}
+
+#About #written {
+	font-size: calc(0.7rem + 0.7vmin);
+	flex-direction: column;
+	margin-bottom: calc(1rem + 1vmin);
+}
+
+#About #written #intro {
+	width: 70%;
+	max-width: 1000px;
+	font-size: calc(0.8rem + 0.8vmin);
+	line-height: 100%;
+	letter-spacing: calc(0.1rem + 0.15vmin);
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #aa0000;
+	margin-bottom: calc(0.5rem + 0.5vmin);
+}
+
+#About #jots {
+	font-size: calc(0.7rem + 0.7vmin);
+	flex-direction: row;
+}
+
+#About #jots .jot-title {
+	font-size: calc(0.8rem + 0.8vmin);
+	line-height: 100%;
+	letter-spacing: calc(0.1rem + 0.15vmin);
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #aa0000;
+	margin-bottom: calc(0.5rem + 0.5vmin);
+}
+
+#About #jots #skills, #hobbies {
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+}
